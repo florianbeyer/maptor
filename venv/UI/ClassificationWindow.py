@@ -1,7 +1,7 @@
 import sys
 import os
-sys.path.append(r"F:/Work/MaptorReivsed/venv/Model")
-sys.path.append(r"F:/Work/MaptorReivsed/venv/Controller")
+sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
+sys.path.append(r"F:\Work\Maptor\maptor\venv\Controller")
 from InputController import InputController
 from RFController import RandomForrestController
 from PyQt5 import QtCore, QtGui, QtWidgets

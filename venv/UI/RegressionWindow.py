@@ -2,11 +2,11 @@
 
 import sys
 import os
-sys.path.append(r"F:/Work/MaptorReivsed/venv/Model")
+sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
 from ReportModule import ReportModule
-sys.path.append(r"F:/Work/MaptorReivsed/venv/Controller")
+sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
 from InputController import InputController
-sys.path.append(r"F:/Work/MaptorReivsed/venv/HelpingModel")
+sys.path.append(r"F:\Work\Maptor\maptor\venv\HelpingModel")
 from RegRptHelper import RegressionReportHelper
 from RegressionController import RegressionController
 from PyQt5 import QtCore, QtGui, QtWidgets
