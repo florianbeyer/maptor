@@ -1,16 +1,13 @@
 import sys
-import os
 sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
 sys.path.append(r"F:\Work\Maptor\maptor\venv\Controller")
 from InputController import InputController
 from RFController import RandomForrestController
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication,QInputDialog, QLineEdit, QFileDialog,QDialog,QMessageBox
+from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from osgeo import ogr
-from osgeo import gdal, ogr, gdal_array
 from ReportModule import ReportModule
-import joblib
-import time
+
 
 
 class Ui_ClassificationWindow(object):
@@ -389,24 +386,14 @@ class Ui_ClassificationWindow(object):
             self.ui.setupUi(self.window)
             return
 
-        if self.saveModel == 1:
-            if self.ModelName.text() == "":
-                msg.setText("Please enter name for saving model. ")
-                msg.setInformativeText("Model name missing")
-                msg.exec_()
-                self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_ClassificationWindow()
-                self.ui.setupUi(self.window)
-                return
-
-            if self.ModelSavePath.text() == "":
-                msg.setText("Please path for saving model. ")
-                msg.setInformativeText("Model path missing")
-                msg.exec_()
-                self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_ClassificationWindow()
-                self.ui.setupUi(self.window)
-                return
+        if self.saveModel == 1 and (self.ModelName.text() == "" or self.ModelSavePath.text() == ""):
+            msg.setText("Please enter name and Path for saving model. ")
+            msg.setInformativeText("Either Model Name of Path not entered")
+            msg.exec_()
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_ClassificationWindow()
+            self.ui.setupUi(self.window)
+            return
 
         else:
             self.Run()

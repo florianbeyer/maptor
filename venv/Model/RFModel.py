@@ -1,15 +1,11 @@
 from sklearn.ensemble import RandomForestClassifier
-import pandas as pd
 import numpy as np
 from sklearn.metrics import classification_report, accuracy_score # calculating measures for accuracy assessment
-import matplotlib.pyplot as plt
-from osgeo import ogr
-from osgeo import gdal, ogr, gdal_array
+from osgeo import gdal
 import joblib
 import sys
 sys.path.append(r"F:/Work/MaptorReivsed/venv/Model")
 from ReportModule import ReportModule
-import seaborn as sn
 import pandas as pd
 import matplotlib.pyplot as plt
 

@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication,QInputDialog, QLineEdit, QFileDialog
+from PyQt5.QtWidgets import QFileDialog
 
 class Ui_LoadModelWindow(object):
 

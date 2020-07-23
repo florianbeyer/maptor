@@ -1,24 +1,8 @@
-import sys
-import os
 import numpy as np
-from osgeo import ogr
 from osgeo import gdal, ogr, gdal_array# I/O image data
-import pandas as pd
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-# sys.path.append(os.path.abspath(r"F:/Work/MaptorReivsed/venv/Model"))
-# from ReportModel import ReportGen
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-from PIL import Image
-from reportlab.platypus import Table,TableStyle
-from reportlab.lib import colors
-from reportlab.graphics import renderPDF
-from svglib.svglib import svg2rlg
-from io import BytesIO
-from datetime import date
-import matplotlib
 
 
 
@@ -77,7 +61,7 @@ class InputModule():
                 img[:, :, b] = img_ds.GetRasterBand(b + 1).ReadAsArray()
             return [img_ds,img]
 
-        except Error as e:
+        except ValueError as e:
             print("Error in loading Image file.")
             print(e)
 
@@ -100,7 +84,7 @@ class InputModule():
             assert err == gdal.CE_None
             roi = mem_raster.ReadAsArray()
             return roi
-        except Error as e:
+        except ValueError as e:
             print("Could not load Training Data")
             print(e)
 
@@ -126,7 +110,7 @@ class InputModule():
             roi_v = mem_raster_v.ReadAsArray()
             return roi_v
 
-        except Error as e:
+        except ValueError as e:
             print("Could not load Validation Data")
             print(e)
 
@@ -146,7 +130,7 @@ class InputModule():
             plt.imshow(data2, cmap=plt.cm.Spectral) # data = roi && cmap = plt.cm.Spectral
             plt.title('Training Image')
             plt.show()
-        except Error as e:
+        except ValueError as e:
             print(e)
             print("Could not plot the data")
 
@@ -172,7 +156,7 @@ class InputModule():
             plt.imshow(roi_v, cmap=plt.cm.Spectral)
             plt.title('Validation Data')
             plt.show()
-        except Error as e:
+        except ValueError as e:
             print(e)
             print("Could not create plots for Training/Validation")
 

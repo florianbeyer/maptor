@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c45057f-010e-4af9-82b7-526d2850c35f" name="Default Changelist" comment="" />
+    <list default="true" id="4c45057f-010e-4af9-82b7-526d2850c35f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/HelpingModel/ProgressHepler.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/HelpingModel/ProgressHepler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Model/InputModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/InputModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Model/RFModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/RFModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Model/RegressionModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/RegressionModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Model/ReportModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/ReportModule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/UI/ClassificationWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/UI/ClassificationWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/UI/RegressionWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/UI/RegressionWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/UI/loadmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/UI/loadmodel.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +27,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1XTUGWAtvENfqjAkEtbgdT8rzWc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -25,7 +39,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv/HelpingModel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -164,8 +178,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.InputModel" />
       <item itemvalue="Python.ClassificationWindow" />
+      <item itemvalue="Python.InputModel" />
       <item itemvalue="Python.RFModel" />
       <item itemvalue="Python.RegressionModel" />
       <item itemvalue="Python.ReportModule" />
@@ -210,7 +224,6 @@
     <state x="537" y="252" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592480317221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="537" y="252" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1586349009881" />
     <state x="537" y="252" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1592480317221" />
     <state x="-1155" y="242" key="#com.intellij.ide.util.MemberChooser" timestamp="1589406563102">
       <screen x="-1920" y="5" width="1920" height="1040" />
@@ -226,9 +239,10 @@
     <state width="772" height="466" key="DebuggerActiveHint/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1587224357796" />
     <state width="915" height="370" key="DebuggerActiveHint/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1587464888252" />
     <state width="1001" height="454" key="DebuggerActiveHint/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1591262812399" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1594280523243">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1595452017951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1595452017951" />
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594280523243" />
     <state width="1515" height="428" key="GridCell.Tab.0.bottom" timestamp="1594303332664">
       <screen x="0" y="0" width="1536" height="824" />
@@ -296,15 +310,11 @@
     <state x="-1530" y="157" key="SettingsEditor/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1587072491691" />
     <state x="312" y="112" key="SettingsEditor/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594288140391" />
     <state x="2261" y="163" key="SettingsEditor/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593778097750" />
-    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1585864301432">
-      <screen x="-1920" y="5" width="1920" height="1040" />
-    </state>
-    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1585864301431" />
-    <state x="524" y="273" key="com.intellij.ide.util.TipDialog" timestamp="1594279843208">
+    <state x="524" y="273" key="com.intellij.ide.util.TipDialog" timestamp="1595452003319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1265" y="350" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589662366612" />
-    <state x="524" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1593874197118" />
+    <state x="524" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1595452003319" />
     <state x="524" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594279843208" />
     <state x="2493" y="361" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593777254850" />
     <state x="0" y="0" width="1550" height="830" key="dock-window-1" timestamp="1588255037432">

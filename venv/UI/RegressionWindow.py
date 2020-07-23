@@ -1,7 +1,6 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
-import os
 sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
 from ReportModule import ReportModule
 sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
@@ -10,9 +9,8 @@ sys.path.append(r"F:\Work\Maptor\maptor\venv\HelpingModel")
 from RegRptHelper import RegressionReportHelper
 from RegressionController import RegressionController
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication,QInputDialog, QLineEdit, QFileDialog,QDialog,QProgressBar,QMessageBox
+from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from osgeo import ogr
-from osgeo import gdal, ogr, gdal_array
 
 
 class Ui_RegressionWindow(object):
@@ -304,24 +302,14 @@ class Ui_RegressionWindow(object):
             self.ui.setupUi(self.window)
             return
 
-        if self.saveModel == 1:
-            if self.ModelName.text() == "":
-                msg.setText("Please enter name for saving model. ")
-                msg.setInformativeText("Model name missing")
-                msg.exec_()
-                self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_RegressionWindow()
-                self.ui.setupUi(self.window)
-                return
-
-            if self.ModelSavePath.text() == "":
-                msg.setText("Please path for saving model. ")
-                msg.setInformativeText("Model path missing")
-                msg.exec_()
-                self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_RegressionWindow()
-                self.ui.setupUi(self.window)
-                return
+        if self.saveModel == 1 and (self.ModelName.text() == "" or self.ModelSavePath.text() == ""):
+            msg.setText("Please enter name and Path for saving model. ")
+            msg.setInformativeText("Either Model Name of Path not entered")
+            msg.exec_()
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_RegressionWindow()
+            self.ui.setupUi(self.window)
+            return
 
         else:
             self.Run()
@@ -329,47 +317,50 @@ class Ui_RegressionWindow(object):
 
     def Run(self):
 
+        try:
+            reportpath = self.ReportsavePath.text()
+            reportpath+="/"+str(self.ReportName.text())+".pdf"
 
-        reportpath = self.ReportsavePath.text()
-        reportpath+="/"+str(self.ReportName.text())+".pdf"
+            prediction_map = self.ReportsavePath.text()
+            prediction_map += "/" + str(self.ImgName.text())+"tif"
 
-        prediction_map = self.ReportsavePath.text()
-        prediction_map += "/" + str(self.ImgName.text())+"tif"
-
-        modelname = self.ModelName.text()
-        modelsavepath = self.ModelSavePath.text() + "/" + str(modelname)+".sav"
-
-
-
-        LoadingImages = self.input_C.load_image_data()
-        img_ds = LoadingImages[0]
-        img = LoadingImages[1]
-
-        doc = self.rt.build_doc(reportpath,"Regression")
-        self.input_C.set_training_attr(self.attributes.currentText())
-
-        TrainingData = self.input_C.load_train_data(img_ds)  ## roi
-
-       # self.input_C.create_training_subplots(img[:, :, 0],TrainingData)
-
-        Regressor = self.RgMdl.RF_regressor(TrainingData,img,self.attributes.currentText())
-        RFR = Regressor[0]
-        self.helper = Regressor[1]
-        #preparesection1
-        prediction = self.RgMdl.RF_prediction(RFR,img)
-
-        self.RgMdl.RF_save_PredictionImage(prediction,prediction_map,img,img_ds)
+            modelname = self.ModelName.text()
+            modelsavepath = self.ModelSavePath.text() + "/" + str(modelname)+".sav"
 
 
-        doc = self.rt.Reg_prepare_report(doc,img,prediction,TrainingData,self.helper,self.ImgPath.text(),self.tranData_Path.text(),reportpath,prediction_map,modelsavepath)
 
-        if self.saveModel == 1:
-            self.RgMdl.save_model(RFR,modelsavepath)
+            LoadingImages = self.input_C.load_image_data()
+            img_ds = LoadingImages[0]
+            img = LoadingImages[1]
 
-        doc.save()
+            doc = self.rt.build_doc(reportpath,"Regression")
+            self.input_C.set_training_attr(self.attributes.currentText())
 
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setWindowTitle("Complete!!!")
-        msg.setText("Processing Done. Repoort ready to preview ")
-        msg.exec_()
+            TrainingData = self.input_C.load_train_data(img_ds)  ## roi
+
+           # self.input_C.create_training_subplots(img[:, :, 0],TrainingData)
+
+            Regressor = self.RgMdl.RF_regressor(TrainingData,img,self.attributes.currentText())
+            RFR = Regressor[0]
+            self.helper = Regressor[1]
+            #preparesection1
+            prediction = self.RgMdl.RF_prediction(RFR,img)
+
+            self.RgMdl.RF_save_PredictionImage(prediction,prediction_map,img,img_ds)
+
+
+            doc = self.rt.Reg_prepare_report(doc,img,prediction,TrainingData,self.helper,self.ImgPath.text(),self.tranData_Path.text(),reportpath,prediction_map,modelsavepath)
+
+            if self.saveModel == 1:
+                self.RgMdl.save_model(RFR,modelsavepath)
+
+            doc.save()
+
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setWindowTitle("Complete!!!")
+            msg.setText("Processing Done. Repoort ready to preview ")
+            msg.exec_()
+
+        except ValueError as e:
+            print(e)

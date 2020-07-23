@@ -1,8 +1,5 @@
-from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-from PIL import Image
-from reportlab.platypus import Table,TableStyle,Frame,KeepInFrame
-from reportlab.lib.units import inch
+from reportlab.platypus import Table,TableStyle
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.graphics import renderPDF
@@ -15,9 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from reportlab.platypus.tables import Table
 import seaborn as sn
-import pandas as pd
-import operator
-import pprint
+
 
 
 class ReportModule():
@@ -37,7 +32,7 @@ class ReportModule():
             doc.drawString(30, 737, '')
             doc.line(20, 735, 570, 735)
             return doc
-        except Error as e:
+        except ValueError as e:
             print(e)
 
     def prepare_trg_subplots(self,doc,data1,data2):
@@ -276,7 +271,7 @@ class ReportModule():
             #print(table)
             #print(importance)
             return doc
-        except Error as e:
+        except ValueError as e:
             print(e)
 
     # def prepare_class_prediction(self,doc,img,class_prediction):
@@ -378,7 +373,7 @@ class ReportModule():
                 doc.drawString(30, 20, "Model Saved to Path:"+ model_path)
 
             return doc
-        except Error as e:
+        except ValueError as e:
             print(e)
 
     def Reg_prepare_report(self,doc,img,prediction,training,helper,img_path,train_data,reportpath,prediction_map,modelsavepath):
@@ -662,7 +657,7 @@ class ReportModule():
             plt.close(fig)
 
             return doc
-        except Error as e:
+        except ValueError as e:
             print(e)
 
     def chunks(self,lst, n):

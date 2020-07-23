@@ -4,8 +4,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 from operator import itemgetter
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt # plot figures
-from osgeo import gdal, ogr, gdal_array
+from osgeo import gdal
 import sys
 sys.path.append(r"F:/Work/MaptorReivsed/venv/HelpingModel")
 from RegRptHelper import RegressionReportHelper
