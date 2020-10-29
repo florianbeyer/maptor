@@ -2,15 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c45057f-010e-4af9-82b7-526d2850c35f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/Mapto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/Maptor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/flob.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/rsz_11rsz_euro_fonds_quer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/rsz_1rsz_1europaeischer-sozialfonds-vektor-farbig-rgb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/rsz_1wetscapes_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/Images/unirostock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/BETA2007.gsb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/CH" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/FL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/GL27" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/ITRF2000" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/ITRF2008" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/ITRF2014" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/MD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/Makefile.am" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/Makefile.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/README.DATUMGRID" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/TN" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/WI" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/WO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/alaska" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/conus" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/egm96_15.gtx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/hawaii" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/nad.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/nad27" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/nad83" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/ntf_r93.gsb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/ntv1_can.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/null" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/nzgd2kgrid0005.gsb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/other.extra" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/projjson.schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/prvi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/stgeorge" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/stlrnc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/stpaul" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/UI/proj/world" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/HelpingModel/ProgressHepler.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/HelpingModel/ProgressHepler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Model/InputModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/InputModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Model/RFModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/RFModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Model/RegressionModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/RegressionModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Model/ReportModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Model/ReportModule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/UI/ClassificationWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/UI/ClassificationWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/UI/RegressionWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/UI/RegressionWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/UI/loadmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/UI/loadmodel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/UI/temp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +64,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XTUGWAtvENfqjAkEtbgdT8rzWc" />
@@ -39,14 +80,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv/Model" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Work\Maptor\venv\Model" />
       <recent name="F:\Work\MaptorReivsed\venv\UI" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Work\Maptor\venv\Model" />
       <recent name="F:\Work\MaptorReivsed\venv\HelpingModel" />
     </key>
   </component>
@@ -178,8 +221,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.ClassificationWindow" />
       <item itemvalue="Python.InputModel" />
+      <item itemvalue="Python.ClassificationWindow" />
       <item itemvalue="Python.RFModel" />
       <item itemvalue="Python.RegressionModel" />
       <item itemvalue="Python.ReportModule" />
@@ -218,127 +261,140 @@
       <option name="presentableId" value="Default" />
       <updated>1581069482638</updated>
     </task>
+    <task id="LOCAL-00001" summary="develop: merged version 1.4">
+      <created>1603972282957</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603972282957</updated>
+    </task>
+    <task id="LOCAL-00002" summary="develop: merged version 1.4 + added 2 models">
+      <created>1603972405562</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603972405562</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="develop: merged version 1.4" />
+    <MESSAGE value="develop: merged version 1.4 + added 2 models" />
+    <option name="LAST_COMMIT_MESSAGE" value="develop: merged version 1.4 + added 2 models" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="537" y="252" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592480317221">
+    <state x="424" y="8" key="CommitChangelistDialog2" timestamp="1603972403623">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="537" y="252" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1592480317221" />
-    <state x="-1155" y="242" key="#com.intellij.ide.util.MemberChooser" timestamp="1589406563102">
-      <screen x="-1920" y="5" width="1920" height="1040" />
-    </state>
-    <state x="-1155" y="242" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589406563102" />
-    <state x="2533" y="351" width="454" height="484" key="#com.intellij.tools.ToolEditorDialog" timestamp="1593778095144">
-      <screen x="1920" y="26" width="1680" height="1010" />
-    </state>
-    <state x="2533" y="351" width="454" height="484" key="#com.intellij.tools.ToolEditorDialog/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593778095144" />
-    <state width="1001" height="454" key="DebuggerActiveHint" timestamp="1591262812399">
-      <screen x="1920" y="26" width="1680" height="1010" />
-    </state>
-    <state width="772" height="466" key="DebuggerActiveHint/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1587224357796" />
-    <state width="915" height="370" key="DebuggerActiveHint/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1587464888252" />
-    <state width="1001" height="454" key="DebuggerActiveHint/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1591262812399" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1595452017951">
+    <state x="424" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603972403623" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1603972111002">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1595452017951" />
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594280523243" />
-    <state width="1515" height="428" key="GridCell.Tab.0.bottom" timestamp="1594303332664">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603972111002" />
+    <state width="1515" height="143" key="GridCell.Tab.0.bottom" timestamp="1603972181384">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589736631037" />
-    <state width="1515" height="428" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1594303332664" />
-    <state width="1515" height="7" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594295001023" />
-    <state width="1659" height="18" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593780180227" />
-    <state width="1515" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590397535034" />
-    <state width="1515" height="428" key="GridCell.Tab.0.center" timestamp="1594303332664">
+    <state width="1515" height="143" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603972181384" />
+    <state width="1515" height="143" key="GridCell.Tab.0.center" timestamp="1603972181382">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.center/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589736631036" />
-    <state width="1515" height="428" key="GridCell.Tab.0.center/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1594303332664" />
-    <state width="1515" height="7" key="GridCell.Tab.0.center/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594295001023" />
-    <state width="1659" height="18" key="GridCell.Tab.0.center/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593780180227" />
-    <state width="1515" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590397535034" />
-    <state width="1515" height="428" key="GridCell.Tab.0.left" timestamp="1594303332663">
+    <state width="1515" height="143" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603972181382" />
+    <state width="1515" height="143" key="GridCell.Tab.0.left" timestamp="1603972181382">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.left/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589736631036" />
-    <state width="1515" height="428" key="GridCell.Tab.0.left/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1594303332663" />
-    <state width="1515" height="7" key="GridCell.Tab.0.left/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594295001023" />
-    <state width="1659" height="18" key="GridCell.Tab.0.left/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593780180227" />
-    <state width="1515" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590397535034" />
-    <state width="1515" height="428" key="GridCell.Tab.0.right" timestamp="1594303332664">
+    <state width="1515" height="143" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603972181382" />
+    <state width="1515" height="143" key="GridCell.Tab.0.right" timestamp="1603972181383">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.right/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589736631036" />
-    <state width="1515" height="428" key="GridCell.Tab.0.right/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1594303332664" />
-    <state width="1515" height="7" key="GridCell.Tab.0.right/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594295001023" />
-    <state width="1659" height="18" key="GridCell.Tab.0.right/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593780180227" />
-    <state width="1515" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590397535034" />
-    <state width="1659" height="538" key="GridCell.Tab.1.bottom" timestamp="1593777157423">
-      <screen x="1920" y="26" width="1680" height="1010" />
-    </state>
-    <state width="1899" height="262" key="GridCell.Tab.1.bottom/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589735599890" />
-    <state width="1515" height="2" key="GridCell.Tab.1.bottom/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1593092792059" />
-    <state width="1515" height="2" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1592483582702" />
-    <state width="1659" height="538" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593777157423" />
-    <state width="1659" height="538" key="GridCell.Tab.1.center" timestamp="1593777157423">
-      <screen x="1920" y="26" width="1680" height="1010" />
-    </state>
-    <state width="1899" height="262" key="GridCell.Tab.1.center/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589735599890" />
-    <state width="1515" height="2" key="GridCell.Tab.1.center/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1593092792058" />
-    <state width="1515" height="2" key="GridCell.Tab.1.center/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1592483582701" />
-    <state width="1659" height="538" key="GridCell.Tab.1.center/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593777157423" />
-    <state width="1659" height="538" key="GridCell.Tab.1.left" timestamp="1593777157423">
-      <screen x="1920" y="26" width="1680" height="1010" />
-    </state>
-    <state width="1899" height="262" key="GridCell.Tab.1.left/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589735599890" />
-    <state width="1515" height="2" key="GridCell.Tab.1.left/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1593092792058" />
-    <state width="1515" height="2" key="GridCell.Tab.1.left/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1592483582701" />
-    <state width="1659" height="538" key="GridCell.Tab.1.left/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593777157423" />
-    <state width="1659" height="538" key="GridCell.Tab.1.right" timestamp="1593777157423">
-      <screen x="1920" y="26" width="1680" height="1010" />
-    </state>
-    <state width="1899" height="262" key="GridCell.Tab.1.right/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589735599890" />
-    <state width="1515" height="2" key="GridCell.Tab.1.right/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1593092792059" />
-    <state width="1515" height="2" key="GridCell.Tab.1.right/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1592483582701" />
-    <state width="1659" height="538" key="GridCell.Tab.1.right/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593777157423" />
-    <state x="312" y="112" key="SettingsEditor" timestamp="1594288140391">
+    <state width="1515" height="143" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603972181383" />
+    <state width="1515" height="208" key="GridCell.Tab.1.bottom" timestamp="1603972133841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-1530" y="157" key="SettingsEditor/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1587072491691" />
-    <state x="312" y="112" key="SettingsEditor/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594288140391" />
-    <state x="2261" y="163" key="SettingsEditor/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593778097750" />
+    <state width="1515" height="208" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603972133841" />
+    <state width="1515" height="208" key="GridCell.Tab.1.center" timestamp="1603972133841">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603972133841" />
+    <state width="1515" height="208" key="GridCell.Tab.1.left" timestamp="1603972133840">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603972133840" />
+    <state width="1515" height="208" key="GridCell.Tab.1.right" timestamp="1603972133841">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603972133841" />
+    <state x="618" y="329" key="VCS.ChangelistChooser" timestamp="1603972309439">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1603972309439" />
+    <state x="361" y="135" key="Vcs.Push.Dialog.v2" timestamp="1603972407157">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="135" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603972407157" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1603969852828">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603969852828" />
     <state x="524" y="273" key="com.intellij.ide.util.TipDialog" timestamp="1595452003319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-1265" y="350" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1589662366612" />
     <state x="524" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1595452003319" />
-    <state x="524" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.26.1680.1010@0.0.1536.824" timestamp="1594279843208" />
-    <state x="2493" y="361" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593777254850" />
-    <state x="0" y="0" width="1550" height="830" key="dock-window-1" timestamp="1588255037432">
+    <state x="408" y="28" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603971574192">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" width="1550" height="830" key="dock-window-1/0.0.1536.824/-1920.5.1920.1040@-1920.5.1920.1040" timestamp="1588255037432" />
-    <state x="2391" y="204" width="672" height="678" key="search.everywhere.popup" timestamp="1593778552137">
-      <screen x="1920" y="26" width="1680" height="1010" />
+    <state x="408" y="28" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1603971574192" />
+    <state x="398" y="109" width="740" height="606" key="find.popup" timestamp="1603972355841">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824/-1920.5.1920.1040@0.0.1536.824" timestamp="1590876940823" />
-    <state x="2391" y="204" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.26.1680.1010@1920.26.1680.1010" timestamp="1593778552137" />
+    <state x="398" y="109" width="740" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603972355841" />
+    <state x="361" y="72" key="scopes" timestamp="1603971613059">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="72" key="scopes/0.0.1536.824@0.0.1536.824" timestamp="1603971613059" />
+    <state x="425" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1603971907317">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603971907317" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/venv/Model/ReportModule.py</url>
-          <line>100</line>
+          <line>136</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/venv/UI/ClassificationWindow.py</url>
-          <line>253</line>
+          <line>218</line>
           <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/HelpingModel/RegRptHelper.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/UI/MainWindow.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/UI/MainWindow.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/UI/RegressionTypes.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/UI/RFRegressionWindow.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
