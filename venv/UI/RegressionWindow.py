@@ -1,11 +1,11 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
-sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
+sys.path.append(r"F:\Work\Maptor\venv\Model")
 from ReportModule import ReportModule
-sys.path.append(r"F:\Work\Maptor\maptor\venv\Model")
+sys.path.append(r"F:\Work\Maptor\venv\Model")
 from InputController import InputController
-sys.path.append(r"F:\Work\Maptor\maptor\venv\HelpingModel")
+sys.path.append(r"F:\Work\Maptor\venv\HelpingModel")
 from RegRptHelper import RegressionReportHelper
 from RegressionController import RegressionController
 from PyQt5 import QtCore, QtGui, QtWidgets
