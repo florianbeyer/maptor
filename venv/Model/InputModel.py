@@ -3,7 +3,7 @@ from osgeo import gdal, ogr, gdal_array# I/O image data
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
 
 
 
@@ -67,13 +67,16 @@ class InputModule():
 
 # loading training/validation data
 
-    def load_training_data(self,trg_path,Trg_Attribute_Selected,img_ds):
+    def load_training_data(self,trg_path,Trg_Attribute_Selected,img_ds,type):
         try:
             driver = ogr.GetDriverByName('ESRI Shapefile')
             shape_dataset = driver.Open(trg_path)
             shape_layer = shape_dataset.GetLayer()
             mem_drv = gdal.GetDriverByName('MEM')
-            mem_raster = mem_drv.Create('', img_ds.RasterXSize, img_ds.RasterYSize, 1, gdal.GDT_UInt16)
+            if(type == "Classification"):
+                mem_raster = mem_drv.Create('', img_ds.RasterXSize, img_ds.RasterYSize, 1, gdal.GDT_UInt16)
+            if(type == "Regression"):
+                mem_raster = mem_drv.Create('', img_ds.RasterXSize, img_ds.RasterYSize, 1, gdal.GDT_Float32)
             mem_raster.SetProjection(img_ds.GetProjection())
             mem_raster.SetGeoTransform(img_ds.GetGeoTransform())
             mem_band = mem_raster.GetRasterBand(1)
@@ -114,6 +117,22 @@ class InputModule():
             print("Could not load Validation Data")
             print(e)
 
+
+#loading attributes
+    def FindAttributes(self, filepath):
+        try:
+            driver = ogr.GetDriverByName('ESRI Shapefile')
+            shape_dataset = driver.Open(filepath)
+            shape_layer = shape_dataset.GetLayer()
+            field_names = [field.name for field in shape_layer.schema]
+            return field_names
+        except ValueError as e:
+            print(e)
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setWindowTitle("NO ATTRIBUTES FOUND")
+            msg.setText("NO ATTRIBUTES FOUND IN .SHP FILE. Atrribute Error ")
+            msg.exec_()
 
     """ Creates 2 subplots of Training Data and Image  """
 

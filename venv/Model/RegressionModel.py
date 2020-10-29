@@ -5,19 +5,23 @@ from operator import itemgetter
 import pandas as pd
 import numpy as np
 from osgeo import gdal
-import sys
-sys.path.append(r"F:/Work/MaptorReivsed/venv/HelpingModel")
-from RegRptHelper import RegressionReportHelper
 import joblib
+
+import sys
+sys.path.append(r"..\HelpingModel")
+from RegRptHelper import RegressionReportHelper
+
+
+
 
 class RegressionModel():
     helper = RegressionReportHelper()
 
-    def RF_regressor(self,roi,img,attributes):
+    def RF_regressor(self,roi,img,attributes,test_size,est):
         try:
-            test_size = 0.25
-            randomState = 35
-            est = 100
+            ##test_size = 0.25 ## TEST
+            randomState = 35 #35
+            ##est = 100    ##1000
             n_samples = (roi > 0).sum()
             print(
                 'We have {n} training samples'.format(n=n_samples))  # Subset the image dataset with the training image = X
@@ -197,7 +201,7 @@ class RegressionModel():
             cols = img.shape[1]
             rows = img.shape[0]
             driver = gdal.GetDriverByName("gtiff")
-            outdata = driver.Create(prediction_map, cols, rows, 1, gdal.GDT_UInt32)
+            outdata = driver.Create(prediction_map, cols, rows, 1, gdal.GDT_Float32)
             outdata.SetGeoTransform(img_ds.GetGeoTransform())  ##sets same geotransform as input
             outdata.SetProjection(img_ds.GetProjection())  ##sets same projection as input
             outdata.GetRasterBand(1).WriteArray(prediction)

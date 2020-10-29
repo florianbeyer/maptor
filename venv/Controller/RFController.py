@@ -1,6 +1,6 @@
 import sys
-sys.path.append("rF:/Work/MaptorReivsed/venv/Model")
-from RFModel import RandomForrest
+sys.path.append(r"F:\Work\Maptor\venv\Model")
+from ClassificationModel import RandomForrest
 
 class RandomForrestController():
 
@@ -21,8 +21,8 @@ class RandomForrestController():
     def save_result_image(self,img_ds,img,class_prediction,classification_image):
         return self.rf.save_result_image(img_ds,img,class_prediction,classification_image)
 
-    def validation_processing(self,ValidationData,class_prediction,TrainingData,doc,model_path,Image_savePath):
-        return self.rf.validation_processing(ValidationData,class_prediction,TrainingData,doc,model_path,Image_savePath)
+    def validation_processing(self,ValidationData,class_prediction,TrainingData,doc,model_path,Image_savePath,dir_path):
+        return self.rf.validation_processing(ValidationData,class_prediction,TrainingData,doc,model_path,Image_savePath,dir_path)
 
     def save_model(self, model, file_name):
         return self.rf.save_model(model, file_name)
