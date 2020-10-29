@@ -1,5 +1,4 @@
 class RegressionReportHelper():
-
     imageExtent=""
     BandNumber=""
     FieldName=""

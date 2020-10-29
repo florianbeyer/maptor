@@ -1,17 +1,20 @@
-import sys
-sys.path.append(r"F:\Work\Maptor\venv\Model")
-sys.path.append(r"F:\Work\Maptor\venv\Controller")
-from InputController import InputController
-from RFController import RandomForrestController
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QFileDialog,QMessageBox
-from osgeo import ogr
-from ReportModule import ReportModule
-
+try:
+    import sys,os,logging
+    sys.path.append(r"F:\Work\Maptor\venv\Model")
+    sys.path.append(r"F:\Work\Maptor\venv\Controller")
+    from InputController import InputController
+    from RFController import RandomForrestController
+    from PyQt5 import QtCore, QtGui, QtWidgets
+    from PyQt5.QtWidgets import QFileDialog,QMessageBox
+    from osgeo import ogr
+    from ReportModule import ReportModule
+except Exception as e:
+    print("Cannot import"+str(e))
+    input("Press Enter to exit!")
+    sys.exit(0)
 
 
 class Ui_ClassificationWindow(object):
-
     input_C = InputController()
     rf_C = RandomForrestController()
     rt = ReportModule()
@@ -21,41 +24,41 @@ class Ui_ClassificationWindow(object):
 
     def setupUi(self, ClassificationWindow):
         ClassificationWindow.setObjectName("ClassificationWindow")
-        ClassificationWindow.resize(860, 895)
+        ClassificationWindow.resize(860, 798)
         self.centralwidget = QtWidgets.QWidget(ClassificationWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.imagePath = QtWidgets.QLineEdit(self.centralwidget)
-        self.imagePath.setGeometry(QtCore.QRect(20, 120, 311, 31))
+        self.imagePath.setGeometry(QtCore.QRect(20, 140, 311, 31))
         self.imagePath.setObjectName("imagePath")
         self.trainPath = QtWidgets.QLineEdit(self.centralwidget)
-        self.trainPath.setGeometry(QtCore.QRect(20, 210, 311, 31))
+        self.trainPath.setGeometry(QtCore.QRect(20, 230, 311, 31))
         self.trainPath.setObjectName("trainPath")
         self.validPath = QtWidgets.QLineEdit(self.centralwidget)
-        self.validPath.setGeometry(QtCore.QRect(20, 300, 311, 31))
+        self.validPath.setGeometry(QtCore.QRect(20, 320, 311, 31))
         self.validPath.setObjectName("validPath")
         self.imgBrowseBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.imgBrowseBtn.setGeometry(QtCore.QRect(370, 120, 93, 31))
+        self.imgBrowseBtn.setGeometry(QtCore.QRect(370, 140, 93, 31))
         self.imgBrowseBtn.setObjectName("imgBrowseBtn")
         self.trainBrowseBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.trainBrowseBtn.setGeometry(QtCore.QRect(370, 210, 93, 31))
+        self.trainBrowseBtn.setGeometry(QtCore.QRect(370, 230, 93, 31))
         self.trainBrowseBtn.setObjectName("trainBrowseBtn")
         self.validBrowseBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.validBrowseBtn.setGeometry(QtCore.QRect(370, 300, 93, 31))
+        self.validBrowseBtn.setGeometry(QtCore.QRect(370, 320, 93, 31))
         self.validBrowseBtn.setObjectName("validBrowseBtn")
         self.ImagePathLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ImagePathLabel.setGeometry(QtCore.QRect(30, 90, 131, 20))
+        self.ImagePathLabel.setGeometry(QtCore.QRect(30, 110, 131, 20))
         self.ImagePathLabel.setObjectName("ImagePathLabel")
         self.TrainingPathLabel = QtWidgets.QLabel(self.centralwidget)
-        self.TrainingPathLabel.setGeometry(QtCore.QRect(30, 180, 131, 20))
+        self.TrainingPathLabel.setGeometry(QtCore.QRect(30, 200, 131, 20))
         self.TrainingPathLabel.setObjectName("TrainingPathLabel")
         self.ValdationPathLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ValdationPathLabel.setGeometry(QtCore.QRect(30, 270, 131, 20))
+        self.ValdationPathLabel.setGeometry(QtCore.QRect(30, 290, 131, 20))
         self.ValdationPathLabel.setObjectName("ValdationPathLabel")
         self.TreesLabel = QtWidgets.QLabel(self.centralwidget)
-        self.TreesLabel.setGeometry(QtCore.QRect(30, 380, 131, 20))
+        self.TreesLabel.setGeometry(QtCore.QRect(30, 400, 131, 20))
         self.TreesLabel.setObjectName("TreesLabel")
         self.ClassificationLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ClassificationLabel.setGeometry(QtCore.QRect(350, 10, 291, 61))
+        self.ClassificationLabel.setGeometry(QtCore.QRect(160, 10, 611, 61))
         font = QtGui.QFont()
         font.setPointSize(25)
         font.setBold(False)
@@ -63,76 +66,46 @@ class Ui_ClassificationWindow(object):
         self.ClassificationLabel.setFont(font)
         self.ClassificationLabel.setObjectName("ClassificationLabel")
         self.trainingAttributes = QtWidgets.QComboBox(self.centralwidget)
-        self.trainingAttributes.setGeometry(QtCore.QRect(680, 220, 151, 31))
+        self.trainingAttributes.setGeometry(QtCore.QRect(680, 240, 151, 31))
         self.trainingAttributes.setObjectName("trainingAttributes")
         self.validationAttributes = QtWidgets.QComboBox(self.centralwidget)
-        self.validationAttributes.setGeometry(QtCore.QRect(680, 300, 151, 31))
+        self.validationAttributes.setGeometry(QtCore.QRect(680, 320, 151, 31))
         self.validationAttributes.setObjectName("validationAttributes")
         self.trainAttrBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.trainAttrBtn.setGeometry(QtCore.QRect(570, 220, 93, 28))
+        self.trainAttrBtn.setGeometry(QtCore.QRect(570, 240, 93, 28))
         self.trainAttrBtn.setObjectName("trainAttrBtn")
         self.valAttrBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.valAttrBtn.setGeometry(QtCore.QRect(570, 300, 93, 28))
+        self.valAttrBtn.setGeometry(QtCore.QRect(570, 320, 93, 28))
         self.valAttrBtn.setObjectName("valAttrBtn")
-        self.ReportsavePath = QtWidgets.QLineEdit(self.centralwidget)
-        self.ReportsavePath.setGeometry(QtCore.QRect(20, 620, 221, 31))
-        self.ReportsavePath.setObjectName("ReportsavePath")
+        self.savePath = QtWidgets.QLineEdit(self.centralwidget)
+        self.savePath.setGeometry(QtCore.QRect(20, 560, 321, 31))
+        self.savePath.setObjectName("savePath")
         self.ReportPathLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ReportPathLabel.setGeometry(QtCore.QRect(20, 590, 131, 20))
+        self.ReportPathLabel.setGeometry(QtCore.QRect(20, 530, 131, 20))
         self.ReportPathLabel.setObjectName("ReportPathLabel")
-        self.BrowseRptPath = QtWidgets.QPushButton(self.centralwidget)
-        self.BrowseRptPath.setGeometry(QtCore.QRect(260, 620, 93, 31))
-        self.BrowseRptPath.setObjectName("BrowseRptPath")
+        self.BrowsePath = QtWidgets.QPushButton(self.centralwidget)
+        self.BrowsePath.setGeometry(QtCore.QRect(360, 560, 93, 31))
+        self.BrowsePath.setObjectName("BrowsePath")
         self.runBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.runBtn.setGeometry(QtCore.QRect(710, 420, 121, 41))
+        self.runBtn.setGeometry(QtCore.QRect(710, 440, 121, 41))
         self.runBtn.setObjectName("runBtn")
         self.treesNo = QtWidgets.QLineEdit(self.centralwidget)
-        self.treesNo.setGeometry(QtCore.QRect(20, 420, 131, 41))
+        self.treesNo.setGeometry(QtCore.QRect(20, 440, 131, 41))
         self.treesNo.setObjectName("treesNo")
         self.SaveBtn = QtWidgets.QRadioButton(self.centralwidget)
-        self.SaveBtn.setGeometry(QtCore.QRect(600, 500, 111, 21))
+        self.SaveBtn.setGeometry(QtCore.QRect(600, 530, 93, 20))
         self.SaveBtn.setObjectName("SaveBtn")
-        self.ModelSavePath = QtWidgets.QLineEdit(self.centralwidget)
-        self.ModelSavePath.setGeometry(QtCore.QRect(600, 660, 221, 31))
-        self.ModelSavePath.setObjectName("ModelSavePath")
-        self.BrowseMdlPath = QtWidgets.QPushButton(self.centralwidget)
-        self.BrowseMdlPath.setGeometry(QtCore.QRect(730, 710, 93, 31))
-        self.BrowseMdlPath.setObjectName("BrowseMdlPath")
         self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(10, 480, 1061, 16))
+        self.line.setGeometry(QtCore.QRect(10, 500, 1061, 16))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.ModelPathLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ModelPathLabel.setGeometry(QtCore.QRect(600, 620, 131, 20))
-        self.ModelPathLabel.setObjectName("ModelPathLabel")
-        self.ModelName = QtWidgets.QLineEdit(self.centralwidget)
-        self.ModelName.setGeometry(QtCore.QRect(600, 570, 221, 31))
-        self.ModelName.setObjectName("ModelName")
-        self.ModelNameLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ModelNameLabel.setGeometry(QtCore.QRect(600, 540, 211, 20))
-        self.ModelNameLabel.setObjectName("ModelNameLabel")
-        self.ReportName = QtWidgets.QLineEdit(self.centralwidget)
-        self.ReportName.setGeometry(QtCore.QRect(20, 530, 221, 31))
-        self.ReportName.setObjectName("ReportName")
-        self.ReportNameLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ReportNameLabel.setGeometry(QtCore.QRect(20, 500, 131, 20))
-        self.ReportNameLabel.setObjectName("ReportNameLabel")
-        self.ImgSavePath = QtWidgets.QLineEdit(self.centralwidget)
-        self.ImgSavePath.setGeometry(QtCore.QRect(20, 790, 221, 31))
-        self.ImgSavePath.setObjectName("ImgSavePath")
-        self.ImgName = QtWidgets.QLineEdit(self.centralwidget)
-        self.ImgName.setGeometry(QtCore.QRect(20, 700, 221, 31))
-        self.ImgName.setObjectName("ImgName")
-        self.ImgNameLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ImgNameLabel.setGeometry(QtCore.QRect(20, 670, 161, 20))
-        self.ImgNameLabel.setObjectName("ImgNameLabel")
-        self.ImgPathLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ImgPathLabel.setGeometry(QtCore.QRect(20, 760, 131, 20))
-        self.ImgPathLabel.setObjectName("ImgPathLabel")
-        self.BrowseImgSavetBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.BrowseImgSavetBtn.setGeometry(QtCore.QRect(260, 790, 93, 31))
-        self.BrowseImgSavetBtn.setObjectName("BrowseImgSavetBtn")
+        self.ProjectName = QtWidgets.QLineEdit(self.centralwidget)
+        self.ProjectName.setGeometry(QtCore.QRect(20, 630, 221, 31))
+        self.ProjectName.setObjectName("ReportName")
+        self.ProjectNameLabel = QtWidgets.QLabel(self.centralwidget)
+        self.ProjectNameLabel.setGeometry(QtCore.QRect(20, 610, 131, 20))
+        self.ProjectNameLabel.setObjectName("ReportNameLabel")
         ClassificationWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(ClassificationWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 860, 26))
@@ -147,23 +120,11 @@ class Ui_ClassificationWindow(object):
         self.validBrowseBtn.clicked.connect(self.openValidationDialog)
         self.trainBrowseBtn.clicked.connect(self.openTrainingDialog)
         self.imgBrowseBtn.clicked.connect(self.openImageDialog)
-
         self.trainAttrBtn.clicked.connect(self.Get_TrainAttribute)
         self.valAttrBtn.clicked.connect(self.Get_ValidationAttribute)
 
-        self.ModelNameLabel.hide()
-        self.ModelPathLabel.hide()
-        self.BrowseMdlPath.hide()
-        self.ModelName.hide()
-        self.ModelSavePath.hide()
-
         self.SaveBtn.toggled.connect(self.SaveModel)
-
-        self.BrowseMdlPath.clicked.connect(self.BrowseModelPath)
-
-        self.BrowseRptPath.clicked.connect(self.BrowseReportPath)
-        self.BrowseImgSavetBtn.clicked.connect(self.BrowseImagePath)
-
+        self.BrowsePath.clicked.connect(self.BrowsePathDir)
         self.runBtn.clicked.connect(self.validateInput)
 
         self.retranslateUi(ClassificationWindow)
@@ -179,21 +140,14 @@ class Ui_ClassificationWindow(object):
         self.TrainingPathLabel.setText(_translate("ClassificationWindow", "Training Path"))
         self.ValdationPathLabel.setText(_translate("ClassificationWindow", "Validation Path"))
         self.TreesLabel.setText(_translate("ClassificationWindow", "Number of Trees"))
-        self.ClassificationLabel.setText(_translate("ClassificationWindow", " Classification "))
+        self.ClassificationLabel.setText(_translate("ClassificationWindow", "Random Forrest Classification "))
         self.trainAttrBtn.setText(_translate("ClassificationWindow", "Get Attributes"))
         self.valAttrBtn.setText(_translate("ClassificationWindow", "Get Attributes"))
-        self.ReportPathLabel.setText(_translate("ClassificationWindow", "Save Report to Path"))
-        self.BrowseRptPath.setText(_translate("ClassificationWindow", "Browse"))
+        self.ReportPathLabel.setText(_translate("ClassificationWindow", "Results Directory"))
+        self.BrowsePath.setText(_translate("ClassificationWindow", "Browse"))
         self.runBtn.setText(_translate("ClassificationWindow", "Run"))
         self.SaveBtn.setText(_translate("ClassificationWindow", "Save Model"))
-        self.BrowseMdlPath.setText(_translate("ClassificationWindow", "Browse"))
-        self.ModelPathLabel.setText(_translate("ClassificationWindow", "Save Model to Path"))
-        self.ModelNameLabel.setText(_translate("ClassificationWindow", "Model Name (with .sav) extension"))
-        self.ReportNameLabel.setText(_translate("ClassificationWindow", "Report Name"))
-        self.ImgNameLabel.setText(_translate("ClassificationWindow", "Save Result Image Name"))
-        self.ImgPathLabel.setText(_translate("ClassificationWindow", "Result Image Path"))
-        self.BrowseImgSavetBtn.setText(_translate("ClassificationWindow", "Browse"))
-
+        self.ProjectNameLabel.setText(_translate("ClassificationWindow", "Project Name"))
 
     def openValidationDialog(self):
         filename = QFileDialog.getOpenFileName()
@@ -221,7 +175,14 @@ class Ui_ClassificationWindow(object):
 
         else:
             attlist = self.FindAttributes(self.trainPath.text())
-            self.trainingAttributes.addItems(attlist)
+            if(attlist):
+                self.trainingAttributes.addItems(attlist)
+            if not(attlist):
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
+                msg.setWindowTitle("NO ATTRIBUTES FOUND")
+                msg.setText("NO ATTRIBUTES FOUND IN .SHP FILE. ")
+                msg.exec_()
 
     def Get_ValidationAttribute(self):
         if not self.validPath.text().endswith(".shp"):
@@ -233,62 +194,63 @@ class Ui_ClassificationWindow(object):
             return
         else:
             attlist = self.FindAttributes(self.validPath.text())
-            self.validationAttributes.addItems(attlist)
+            if (attlist):
+                self.validationAttributes.addItems(attlist)
+            if not (attlist):
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
+                msg.setWindowTitle("NO ATTRIBUTES FOUND")
+                msg.setText("NO ATTRIBUTES FOUND IN .SHP FILE. ")
+                msg.exec_()
 
     def FindAttributes(self, filepath):
-        try:
-            driver = ogr.GetDriverByName('ESRI Shapefile')
-            shape_dataset = driver.Open(filepath)
-            shape_layer = shape_dataset.GetLayer()
-            field_names = [field.name for field in shape_layer.schema]
-            return field_names
-        except ValueError as e:
-            print(e)
+        return self.input_C.FindAttributes(filepath)
+        # try:
+        #     driver = ogr.GetDriverByName('ESRI Shapefile')
+        #     shape_dataset = driver.Open(filepath)
+        #     shape_layer = shape_dataset.GetLayer()
+        #     field_names = [field.name for field in shape_layer.schema]
+        #     return field_names
+        # except ValueError as e:
+        #     print(e)
 
     def loadImage(self):
         self.input_C.load_image_data()
 
-    # //def OpenPopUp(self):
-    #     self.window = QtWidgets.QMainWindow()
-    #     self.ui = Ui_PopUp()
-    #     self.ui.setupUi(self.window)
-    #     # MainWindow.hide()
-    #     self.window.show()
-
-    def BrowseModelPath(self):
+    def BrowsePathDir(self):
         filename = QFileDialog.getExistingDirectory()
-        self.ModelSavePath.setText(filename)
+        self.savePath.setText(filename)
 
-    def BrowseReportPath(self):
-        filename = QFileDialog.getExistingDirectory()
-        self.ReportsavePath.setText(filename)
+    # def BrowseReportPath(self):
+    #     filename = QFileDialog.getExistingDirectory()
+    #     self.ReportsavePath.setText(filename)
 
-    def BrowseImagePath(self):
-        filename = QFileDialog.getExistingDirectory()
-        self.ImgSavePath.setText(filename)
+    # def BrowseImagePath(self):
+    #     filename = QFileDialog.getExistingDirectory()
+    #     self.ImgSavePath.setText(filename)
 
     def SaveModel(self):
         if self.SaveBtn.isChecked():
             self.saveModel = 1
-            self.ModelNameLabel.show()
-            self.ModelPathLabel.show()
-            self.BrowseMdlPath.show()
-            self.ModelSavePath.show()
-            self.ModelName.show()
+            # self.ModelNameLabel.show()
+            # self.ModelPathLabel.show()
+            # self.BrowseMdlPath.show()
+            # self.ModelSavePath.show()
+            # self.ModelName.show()
         else:
             self.saveModel = 0
-            self.ModelNameLabel.hide()
-            self.ModelPathLabel.hide()
-            self.ModelSavePath.hide()
-            self.BrowseMdlPath.hide()
-            self.ModelName.hide()
+            # self.ModelNameLabel.hide()
+            # self.ModelPathLabel.hide()
+            # self.ModelSavePath.hide()
+            # self.BrowseMdlPath.hide()
+            # self.ModelName.hide()
 
-    def LoadValidationDialog(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_ValidationDialog()
-        self.ui.setupUi(self.window)
-        # MainWindow.hide()
-        self.window.show()
+    # def LoadValidationDialog(self):
+    #     self.window = QtWidgets.QMainWindow()
+    #     self.ui = Ui_ValidationDialog()
+    #     self.ui.setupUi(self.window)
+    #     # MainWindow.hide()
+    #     self.window.show()
 
 
     def validateInput(self):
@@ -350,56 +312,75 @@ class Ui_ClassificationWindow(object):
                 self.ui.setupUi(self.window)
                 return
 
-        if self.ReportName.text() == "":
-            msg.setText("Please enter a suitable name for report. ")
-            msg.setInformativeText("Report name missing")
+        if self.ProjectName.text() == "":
+            msg.setText("Please enter a suitable name for your project. ")
+            msg.setInformativeText("Project name missing")
             msg.exec_()
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ClassificationWindow()
             self.ui.setupUi(self.window)
             return
 
-        if self.ReportsavePath.text() == "":
-            msg.setText("Please select path for report. ")
-            msg.setInformativeText("Report path missing")
+        if self.savePath.text() == "":
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setWindowTitle("Validation Prompt")
+            msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+            msg.setText("Please select path for Results. ")
+            msg.setInformativeText("Results path missing")
             msg.exec_()
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ClassificationWindow()
             self.ui.setupUi(self.window)
             return
 
-        if self.ImgName.text() == "":
-            msg.setText("Please enter a suitable name for Image result. ")
-            msg.setInformativeText("Image name missing")
-            msg.exec_()
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ClassificationWindow()
-            self.ui.setupUi(self.window)
-            return
+        # if self.ImgName.text() == "":
+        #     msg.setText("Please enter a suitable name for Image result. ")
+        #     msg.setInformativeText("Image name missing")
+        #     msg.exec_()
+        #     self.window = QtWidgets.QMainWindow()
+        #     self.ui = Ui_ClassificationWindow()
+        #     self.ui.setupUi(self.window)
+        #     return
+        #
+        # if self.ImgSavePath.text() == "":
+        #     msg.setText("Please select path for Image result. ")
+        #     msg.setInformativeText("Image path missing")
+        #     msg.exec_()
+        #     self.window = QtWidgets.QMainWindow()
+        #     self.ui = Ui_ClassificationWindow()
+        #     self.ui.setupUi(self.window)
+        #     return
 
-        if self.ImgSavePath.text() == "":
-            msg.setText("Please select path for Image result. ")
-            msg.setInformativeText("Image path missing")
-            msg.exec_()
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ClassificationWindow()
-            self.ui.setupUi(self.window)
-            return
-
-        if self.saveModel == 1 and (self.ModelName.text() == "" or self.ModelSavePath.text() == ""):
-            msg.setText("Please enter name and Path for saving model. ")
-            msg.setInformativeText("Either Model Name of Path not entered")
-            msg.exec_()
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ClassificationWindow()
-            self.ui.setupUi(self.window)
-            return
+        # if self.saveModel == 1 and (self.ModelName.text() == "" or self.ModelSavePath.text() == ""):
+        #     msg.setText("Please enter name and Path for saving model. ")
+        #     msg.setInformativeText("Either Model Name of Path not entered")
+        #     msg.exec_()
+        #     self.window = QtWidgets.QMainWindow()
+        #     self.ui = Ui_ClassificationWindow()
+        #     self.ui.setupUi(self.window)
+        #     return
 
         else:
             self.Run()
 
     def Run(self):
         try:
+            import sys, os
+            try:
+                ROOT_DIR = os.path.abspath(os.curdir)
+                PROJ_DIR = ROOT_DIR + "\PROJ"
+                os.environ['PROJ_LIB'] = PROJ_DIR
+
+                if 'PROJ_LIB' in os.environ:
+                    print('env variable : PROJ_LIB  set...')
+                else:
+                    print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
+            except Exception as ex:
+                print("Could not set env_var")
+
+            print("The process has started.... This will take few minutes")
             if self.treesNo.text() == "":
                 trees = 100
             else:
@@ -407,19 +388,39 @@ class Ui_ClassificationWindow(object):
 
             self.rf_C.set_RF_trees = trees
 
-            doc_path = str(self.ReportsavePath.text()) + "/" + str(self.ReportName.text()) +".pdf"
-            print(doc_path)
+            print (self.savePath.text())
+            dir_path = self.savePath.text()+"\\"+self.ProjectName.text()
 
-            doc = self.rt.build_doc(doc_path,"Classification")
+            if os.path.isdir(dir_path):
+
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
+                msg.setWindowTitle("Validation Prompt")
+                msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                msg.setText("A folder nammed "+ self.ProjectName.text()+" already exists. ")
+                msg.setInformativeText("Please move the folder and try again")
+                msg.exec_()
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ClassificationWindow()
+                self.ui.setupUi(self.window)
+                return
+
+            else:
+                os.mkdir(dir_path)
+        #
+            doc_path = dir_path + "/" + str(self.ProjectName.text()) +"_REPORT.pdf"
+            print(doc_path)
+        #
+            doc = self.rt.build_doc(doc_path,"Random Forrest Classification Report")
             LoadingImages = self.input_C.load_image_data()
             img_ds = LoadingImages[0]
             img = LoadingImages[1]
-
-
+        #
+        #
             self.input_C.set_training_attr(self.trainingAttributes.currentText())
             self.input_C.set_validation_attr(self.validationAttributes.currentText())
 
-            TrainingData = self.input_C.load_train_data(img_ds)  ## roi
+            TrainingData = self.input_C.load_train_data(img_ds,"Classification")  ## roi
             ValidationData = self.input_C.load_validation_data(img_ds)  ##roi_V
 
             classifier_output = self.rf_C.rf_classifier(img, img_ds, TrainingData, trees)
@@ -429,37 +430,31 @@ class Ui_ClassificationWindow(object):
             table_M = classifier_output[2]
             ob_score = classifier_output[3]
 
-            model_path = str(self.ModelSavePath.text())
-            model_path += "/" + str(self.ModelName.text()) +".sav"
-            print(model_path)
 
-            if self.saveModel == 1:
+            if self.SaveBtn.isChecked() == True:
+                model_path = dir_path
+                model_path += "/" + str(self.ProjectName.text()) + "_MODEL.sav"
                 self.rf_C.save_model(model, model_path)
+            else:
+                model_path = "Model not saved"
 
+        #
             class_prediction = self.rf_C.rf_prediction(img, model)
-
-
-            imgSavePath = str(self.ImgSavePath.text())
-
-            imgSavePath += "/"+ (self.ImgName.text())+".tif"
+            imgSavePath = dir_path
+            imgSavePath += "/"+ (self.ProjectName.text())+"_IMG.tif"
             self.rf_C.save_result_image(img_ds, img, class_prediction, imgSavePath)
 
             doc = self.rt.Clf_prepare_report(doc, img, TrainingData, importance, table_M, trees, ob_score, class_prediction,
-                                           ValidationData,self.trainingAttributes.currentText())
-            doc = self.rf_C.validation_processing(ValidationData, class_prediction, TrainingData, doc,model_path,imgSavePath)
+                                           ValidationData,self.trainingAttributes.currentText(),dir_path)
+
+            doc = self.rf_C.validation_processing(ValidationData, class_prediction, TrainingData, doc,model_path,imgSavePath,dir_path)
             doc.save()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setWindowTitle("Complete!!!")
-            msg.setText("Processing Done. Repoort ready to preview ")
+            msg.setText("Processing Done. Report ready to preview ")
             msg.exec_()
 
         except ValueError:
+            logging.error("Exception occurred", exc_info=True)
             print("Classification Failed...")
-
-
-
-
-
-
-

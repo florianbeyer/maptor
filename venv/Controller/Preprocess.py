@@ -1,7 +1,7 @@
 import sys
-sys.path.append(r'F:\Work\MaptorReivsed\venv\Model')
-from InputModule import InputModule
-from RFModule import RandomForrest
+sys.path.append(r'F:\Work\Maptor\venv\Model')
+from InputModel import InputModule
+from ClassificationModel import RandomForrest
 import matplotlib.pyplot as plt
 
 
@@ -29,23 +29,23 @@ class Prep():
         self.set_img_ds()
 
     def get_training_data(self,test,img_ds):
-        test.load_training_data("F:\Work\Data\shape\holl_cal.shp","Code",img_ds)
+        self.test.load_training_data("F:\Work\Data\shape\holl_cal.shp","Code",img_ds)
 
     def get_validation_data(self,test):
-        ValidationData = test.load_validation_data("F:\Work\Data\shape\holl_val.shp", "Code", img_ds)
+        ValidationData = self.test.load_validation_data("F:\Work\Data\shape\holl_val.shp", "Code", self.img_ds)
 
     def get_subplots(self,test):
-        test.create_subplots("Training Data", img[:, :, 0], 'RS image - first band', plt.cm.Greys_r, TrainingData,
+        test.create_subplots("Training Data", self.img[:, :, 0], 'RS image - first band', plt.cm.Greys_r, self.TrainingData,
                              "Training Image", plt.cm.Spectral)
 
     def RF_classification(self):
-        rf_test.rf_classifier(img, img_ds, TrainingData)
+        self.rf_test.rf_classifier(self.img, self.img_ds, self.TrainingData)
 
     def RF_prediction(self):
-        rf_test.rf_prediction(img, rf2)
+        self.rf_test.rf_prediction(self.img, self.rf2)
 
     def RF_plot_class_Prediction(self,rf_test):
-        rf_test.plot_class_prediction(img, class_prediction)
+        rf_test.plot_class_prediction(self.img, self.class_prediction)
 
     def RF_save_result_img(self,rf_test,img_ds, img, class_prediction):
         rf_test.save_result_image(img_ds, img, class_prediction, r"F:\Work\Data\test1.tif")

@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r"F:/Work/MaptorReivsed/venv/Model")
+sys.path.append(r"F:\Work\Maptor\venv\Model")
 from InputModel import InputModule
 
 
@@ -41,25 +41,26 @@ class InputController():
         return self.input_C.Val_Attribute_Selected
 
     def FindAttributes(self, filepath):
-        driver = ogr.GetDriverByName('ESRI Shapefile')
-        shape_dataset = driver.Open(filepath)
-        shape_layer = shape_dataset.GetLayer()
-        field_names = [field.name for field in shape_layer.schema]
-        return field_names
+        return self.input_C.FindAttributes(filepath)
+        # driver = ogr.GetDriverByName('ESRI Shapefile')
+        # shape_dataset = driver.Open(filepath)
+        # shape_layer = shape_dataset.GetLayer()
+        # field_names = [field.name for field in shape_layer.schema]
+        # return field_names
 
     def load_image_data(self):
         path = self.input_C.RS_Image_Path
         return self.input_C.loadimagedata(path)
 
-    def load_train_data(self,img_ds):
+    def load_train_data(self,img_ds,type):
         path = self.input_C.Training_File_Path
         attr = self.input_C.Trg_Attribute_Selected
-        return self.input_C.load_training_data(path,attr,img_ds)
+        return self.input_C.load_training_data(path,attr,img_ds,type)
 
     def load_validation_data(self,img_ds):
         path = self.input_C.Validation_File_Path
         attr = self.input_C.Val_Attribute_Selected
-        return self.input_C.load_training_data(path,attr,img_ds)
+        return self.input_C.load_validation_data(path,attr,img_ds)
 
     def create_training_subplots(self, data1, data2):
         self.input_C.create_training_subplots(data1,data2)
