@@ -50,10 +50,9 @@ Finally, we are pleased to inform you, that our brand new software [Maptor](http
 
 # upcoming features
 
-Regression options:
-
-- PLSR for large sample sizes
-- RF für sparse sampling sizes
+- linux and macOS
+- PLSR for large sample sizes (regression)
+- RF für sparse sampling sizes (regression)
 - load trained model
 - online user guide
 - automatic parameter tuning for Random Forest Classification and Regression (grid search)
