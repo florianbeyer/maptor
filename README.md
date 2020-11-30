@@ -1,5 +1,9 @@
-# maptor
-A tool to do classification and regression on remote sensing data.
+# Maptor - Machine learning Regression and Classification for Remote Sensing Data
+Classification and regression on remotly sensed data - ***it is as simple as that!
+
+- ***You only need (1) a remote sensing dataset as tiff and (2) a ground truth dataset as shape
+- ***polygon shape file for classification
+- ***point shape file for regression
 
 
 # NEW RELEASE!!! Maptor 1.4beta
