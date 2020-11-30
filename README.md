@@ -1,9 +1,9 @@
 # Maptor - Machine learning Regression and Classification for Remote Sensing Data
 Classification and regression on remotly sensed data - ***it is as simple as that!
 
-- ***You only need (1) a remote sensing dataset as tiff and (2) a ground truth dataset as shape
-- ***polygon shape file for classification
-- ***point shape file for regression
+- ***You only need (1) a remote sensing dataset as tiff and (2) a ground truth dataset as shape***
+- ***polygon shape file for classification***
+- ***point shape file for regression***
 
 
 # NEW RELEASE!!! Maptor 1.4beta
@@ -21,7 +21,7 @@ the software is able to apply
 
 ## Classification
 
-- ***Random Forest classfication
+- ***Random Forest classfication***
 - ground truth data as shape.shp (classes as integer)
 - set your number of trees
 - save trained model(.sav)
@@ -30,14 +30,14 @@ the software is able to apply
 ## Regression
 
 ### large sampling sizes
-- ***Random Forest (RF) Regressor
+- ***Random Forest (RF) Regressor***
 - ground truth data as shape.shp (samples as integer or float)
 - split your samples 0.25 -> 75 % Training samples / 25 % Validation samples
 - save trained model(.sav)
 - save report.pdf and regression.tif
 
 ### sparse sampling sizes
-- ***Partial Least Squares Regression (PLSR)
+- ***Partial Least Squares Regression (PLSR)***
 - ground truth data as shape.shp (samples as integer or float)
 - LOOCV -> Leave-One-Out Crossvalidation
 - automatic selection of best number of latent components
@@ -46,7 +46,7 @@ the software is able to apply
 
 ## known bugs
 - memory error with very big image files (depending on RAM size) 
-***found something/suggestions? please contact florian.beyer@uni-rostock.de
+***found something/suggestions? please contact florian.beyer@uni-rostock.de***
 
 
 # upcoming features
