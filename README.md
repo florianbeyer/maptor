@@ -11,3 +11,46 @@ the software is able to apply
 ![Maptor](http://flobeyer.de/img/Maptor_Screenshot.JPG "Maptor 1.4beta")
 
 [Please download and test Maptor 1.4beta here!](https://datenportal.wetscapes.de/dataset/maptor-0-0)
+
+# (new) features
+--> NOT necessary anymore!!! -> defining the environment variable
+
+## Classification
+
+- ***Random Forest classfication
+- ground truth data as shape.shp (classes as integer)
+- set your number of trees
+- save trained model(.sav)
+- save report.pdf and classification.tif
+
+## Regression
+
+### large sampling sizes
+- ***Random Forest (RF) Regressor
+- ground truth data as shape.shp (samples as integer or float)
+- split your samples 0.25 -> 75 % Training samples / 25 % Validation samples
+- save trained model(.sav)
+- save report.pdf and regression.tif
+
+### sparse sampling sizes
+- ***Partial Least Squares Regression (PLSR)
+- ground truth data as shape.shp (samples as integer or float)
+- LOOCV -> Leave-One-Out Crossvalidation
+- automatic selection of best number of latent components
+- save trained model(.sav)
+- save report.pdf and regression.tif
+
+## known bugs
+- memory error with very big image files (depending on RAM size) 
+***found something/suggestions? please contact florian.beyer@uni-rostock.de
+
+
+# upcoming features
+
+Regression options:
+
+- PLSR for large sample sizes
+- RF für sparse sampling sizes
+- load trained model
+- online user guide
+- automatic parameter tuning for Random Forest Classification and Regression (grid search)
