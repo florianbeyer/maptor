@@ -1,7 +1,7 @@
 try:
     import sys,os,logging
-    sys.path.append(r"F:\Work\Maptor\venv\Model")
-    sys.path.append(r"F:\Work\Maptor\venv\Controller")
+    # sys.path.append(r"F:\Work\Maptor\venv\Model")
+    # sys.path.append(r"F:\Work\Maptor\venv\Controller")
     from InputController import InputController
     from ClassificationController import ClassificationController
     from PyQt5 import QtCore, QtGui, QtWidgets

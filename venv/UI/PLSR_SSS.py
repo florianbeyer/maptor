@@ -1,15 +1,15 @@
 try:
     import sys,os,logging
+    sys.path.append(r"..\Model")
+    sys.path.append(r"..\HelpingModel")
+    sys.path.append(r"..\Controller")
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtWidgets import QFileDialog, QMessageBox
     import matplotlib.pyplot as plt # plot figures
     import numpy as np
-    sys.path.append(r"F:\Work\Maptor\venv\Controller")
     from InputController import InputController
     from PLSR_SSS_Controller import PLSR_SSS_Controller
-    sys.path.append(r"F:\Work\Maptor\venv\Model")
     from ReportModule import ReportModule
-    sys.path.append(r"F:\Work\Maptor\venv\HelpingModel")
     from PLSR_SSS_Helper import PLSR_SSS_Helper
     import pandas as pd
     import traceback

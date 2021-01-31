@@ -1,25 +1,20 @@
 try:
     import sys,os
-    sys.path.append(r"F:\Work\Maptor\venv\Model")
-    from ReportModule import ReportModule
-    sys.path.append(r"F:\Work\Maptor\venv\Model")
-    from InputController import InputController
-    sys.path.append(r"F:\Work\Maptor\venv\HelpingModel")
-    from RFHelper import RFHelper
+    sys.path.append(r"..\Model")
     sys.path.append(r"..\HelpingModel")
+    from ReportModule import ReportModule
+    from InputController import InputController
+    from RFHelper import RFHelper
     from RegRptHelper import RegressionReportHelper
     from RFR_SSS_Controller import RFR_SSS_Controller
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtWidgets import QFileDialog,QMessageBox
-    from osgeo import ogr
-
     from osgeo import gdal, ogr, gdal_array  # I/O image data
     import numpy as np  # math and array handling
     import matplotlib.pyplot as plt  # plot figures
     import pandas as pd  # handling large data as table sheets
     from joblib import dump, load
     from operator import itemgetter
-
     from sklearn.ensemble import RandomForestRegressor
     from sklearn.metrics import mean_squared_error, r2_score
     from sklearn.model_selection import cross_val_predict

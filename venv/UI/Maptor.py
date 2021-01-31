@@ -1,16 +1,22 @@
-# try:
-import sys,logging
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QFileDialog, QMessageBox
-from Classification import Ui_ClassificationWindow
-from loadmodel import Ui_LoadModelWindow
-from HelpWindow import Ui_HelpWindow
-from RegressionTypes import Ui_RegressionTypes
-# except Exception as e:
-#     logging.error("Exception occurred", exc_info=True)
-#     print('Can not import files:' + str(e))
-#     input("Press Enter to exit!")
-#     sys.exit(0)
+try:
+    import pathlib,os,sys
+    current_folder_path, current_folder_name = os.path.split(os.getcwd())
+    sys.path.append(str(current_folder_path)+"\Controller")
+    sys.path.append(str(current_folder_path)+"\Model")
+    sys.path.append(str(current_folder_path)+"\HelpingModel")
+    import sys,logging
+    from PyQt5 import QtCore, QtGui, QtWidgets
+    from PyQt5.QtWidgets import QFileDialog, QMessageBox
+    from Classification import Ui_ClassificationWindow
+    from loadmodel import Ui_LoadModelWindow
+    from HelpWindow import Ui_HelpWindow
+    from RegressionTypes import Ui_RegressionTypes
+    import pathlib,os
+except Exception as e:
+    logging.error("Exception occurred", exc_info=True)
+    print('Can not import files:' + str(e))
+    input("Press Enter to exit!")
+    sys.exit(0)
 
 
 
@@ -149,14 +155,14 @@ if __name__ == "__main__":
             PROJ_DIR = ROOT_DIR + "\PROJ"
             os.environ['PROJ_LIB'] = PROJ_DIR
 
-            if 'PROJ_LIB' in os.environ:
-                print('env variable : PROJ_LIB  set...')
-            else:
-                print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
-
-
-            for i, j in os.environ.items():
-                print(i, j)
+            # if 'PROJ_LIB' in os.environ:
+            #     print('env variable : PROJ_LIB  set...')
+            # else:
+            #     print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
+            #
+            #
+            # for i, j in os.environ.items():
+            #     print(i, j)
 
         except Exception as ex:
             print("Could not set env_var")
