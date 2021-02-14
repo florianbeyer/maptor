@@ -4,13 +4,13 @@ from sklearn.metrics import classification_report, accuracy_score # calculating 
 from osgeo import gdal
 import joblib
 import sys
-sys.path.append(r"F:/Work/MaptorReivsed/venv/Model")
+# sys.path.append(r"F:\Work\Maptor\venv\Model")
 from ReportModule import ReportModule
 import pandas as pd
 import matplotlib.pyplot as plt
 
 
-class RandomForrest():
+class ClassificationModel():
     Trees=500
 
     def set_trees(self,trees):

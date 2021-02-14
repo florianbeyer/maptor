@@ -1,8 +1,10 @@
 try:
     import sys,logging
     from PyQt5 import QtCore, QtGui, QtWidgets
-    from RFRegressionWindow import Ui_RegressionWindow
-    from PLSRWindow import Ui_PLSRWindow
+    from RF_NSS import Ui_RF_NSS
+    from PLSR_SSS import Ui_PLSR_SSS
+    from PLSR_LDS import Ui_PLSR_LDS
+    from RFR_SSS import Ui_RFR_SSS
     from PyQt5.QtWidgets import QFileDialog, QMessageBox
 
 except Exception as e:
@@ -94,16 +96,16 @@ class Ui_RegressionTypes(object):
         RegressionTypes.setWindowTitle(_translate("RegressionTypes", "RegressionTypes"))
         self.Header.setText(_translate("RegressionTypes", "Types of Regression"))
         self.Next_btn.setText(_translate("RegressionTypes", "Next"))
-        self.RF_SP_btn.setText(_translate("RegressionTypes", "Random Forrest"))
+        self.RF_SP_btn.setText(_translate("RegressionTypes", "Random Forest"))
         self.SparseSample_label.setText(_translate("RegressionTypes", "Sparse Sample Size    (e.g. n < 50)"))
         self.PLSR_SP_btn.setText(_translate("RegressionTypes", "PLSR"))
         self.NormalSample_label_3.setText(_translate("RegressionTypes", "*Leave one out Cross Validation (LOOCV) will be used instead of spliting training data."))
         self.NormalSample_label.setText(_translate("RegressionTypes", "Normal Sample Size    (e.g. n > 150)"))
         self.NormalSample_label_2.setText(_translate("RegressionTypes", "*Sampling data will be splitted in training and test data according to user input."))
         self.PLSR_NN_btn.setText(_translate("RegressionTypes", "PLSR    "))
-        self.RF_NN_btn.setText(_translate("RegressionTypes", "Random Forrest"))
-        self.label.setText(_translate("RegressionTypes", "Not available yet*"))
-        self.label_2.setText(_translate("RegressionTypes", "Not available yet*"))
+        self.RF_NN_btn.setText(_translate("RegressionTypes", "Random Forest"))
+        # self.label.setText(_translate("RegressionTypes", "Not available yet*"))
+        # self.label_2.setText(_translate("RegressionTypes", "Not available yet*"))
 
     def RegressionSelection(self):
 
@@ -113,25 +115,25 @@ class Ui_RegressionTypes(object):
             self.PLSR_SP_btn.setChecked(False)
 
             self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_RegressionWindow()
+            self.ui = Ui_RF_NSS()
             self.ui.setupUi(self.window)
             self.window.show()
-        if self.PLSR_NN_btn.isChecked() == True:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
-            msg.setWindowTitle("Feature Not Available yet")
-            msg.setText("Feature Not Available yet ")
 
-            msg.exec_()
+        if self.PLSR_NN_btn.isChecked() == True:
+
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_PLSR_LDS()
+            self.ui.setupUi(self.window)
+            self.window.show()
 
         if self.RF_SP_btn.isChecked() == True:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
-            msg.setWindowTitle("Feature Not Available yet")
-            msg.setText("Feature Not Available yet ")
-            msg.exec_()
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_RFR_SSS()
+            self.ui.setupUi(self.window)
+            self.window.show()
+
         if self.PLSR_SP_btn.isChecked() == True:
             self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_PLSRWindow()
+            self.ui = Ui_PLSR_SSS()
             self.ui.setupUi(self.window)
             self.window.show()

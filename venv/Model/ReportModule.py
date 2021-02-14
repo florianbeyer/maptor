@@ -13,15 +13,27 @@ try:
     import matplotlib.pyplot as plt
     import numpy as np
     from reportlab.platypus.tables import Table
-    import seaborn as sn
+    import seaborn as sns
     import os
     import pandas as pd
     from sklearn.cross_decomposition import PLSRegression
     from sklearn.metrics import mean_squared_error, r2_score
     from sklearn.model_selection import cross_val_predict
-    sys.path.append(r"F:\Work\Maptor\maptor\venv\HelpingModel")
-    from PLSRHelper import PLSRHelper
+    from sklearn import preprocessing
+    # sys.path.append(r"F:\Work\Maptor\venv\HelpingModel")
+    from PLSR_SSS_Helper import PLSR_SSS_Helper
     from RFHelper import RFHelper
+
+    from osgeo import gdal, ogr, gdal_array  # I/O image data
+    import numpy as np  # math and array handling
+    import matplotlib.pyplot as plt  # plot figures
+    import pandas as pd  # handling large data as table sheets
+    from joblib import dump, load
+    from operator import itemgetter
+
+    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.metrics import mean_squared_error, r2_score
+    from sklearn.model_selection import cross_val_predict
 except Exception as e:
     print('Can not import files:' + str(e))
     input("Press Enter to exit!")
@@ -48,37 +60,6 @@ class ReportModule():
         except ValueError as e:
             logging.error("Exception occurred", exc_info=True)
             print(e)
-
-    # def prepare_trg_subplots(self,doc,data1,data2):
-
-        # fig = plt.figure(figsize=(6 ,6))
-        # fig.suptitle('Training data', fontsize=14)
-        #
-        # plt.gca().set_axis_off()
-        # plt.subplots_adjust(top=1, bottom=0, right=1, left=0,
-        #                     hspace=0, wspace=0)
-        # plt.margins(0, 0)
-        # plt.gca().xaxis.set_major_locator(plt.NullLocator())
-        # plt.gca().yaxis.set_major_locator(plt.NullLocator())
-        # plt.subplot(121)
-        # plt.imshow(data1, cmap=plt.cm.Greys_r)  # data  = img[:, :, 0] &&& cmap = plt.cm.Greys_r
-        # plt.title('RS image - first band')
-        # plt.subplot(122)
-        # plt.imshow(data2, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-        # plt.title('Training Image')
-        # plt.show()
-        # imgdata = BytesIO()
-        # fig.savefig(imgdata, format='svg',bbox_inches='tight',pad_inches=0)
-        # imgdata.seek(0)  # rewind the data
-        # drawing = svg2rlg(imgdata)
-        # renderPDF.draw(drawing, doc, 50, 400)
-        # doc.line(20, 350, 570, 350)
-        # doc.setLineWidth(.3)
-        # doc.setFont('Helvetica-Bold', 14)
-        # doc.drawString(30, 620, 'Section 1: General Information and Training')
-        # doc.drawString(30, 600, "Section 2: Validation")
-        # doc.line(20, 650, 570, 650)
-        # return
 
     def Clf_prepare_report(self,doc,img,roi,importance,table_M,trees,ob_score,class_prediction,ValidationData,attribute,dir_path):
         try:
@@ -309,33 +290,7 @@ class ReportModule():
         except ValueError as e:
             logging.error("Exception occurred", exc_info=True)
             print(e)
-    # def prepare_class_prediction(self,doc,img,class_prediction):
-    #     mask = np.copy(img[:, :, 0])
-    #     mask[mask > 0.0] = 1.0  # all actual pixels have a value of 1.0
-    #
-    #     fig = plt.figure(figsize=(7,6))
-    #     plt.imshow(mask)
-    #
-    #     class_prediction.astype(np.float16)
-    #     class_prediction_ = class_prediction * mask
-    #     #
-    #     plt.subplot(121)
-    #     plt.imshow(class_prediction, cmap=plt.cm.Spectral)
-    #     plt.title('classification unmasked')
-    #
-    #     plt.subplot(122)
-    #     plt.imshow(class_prediction_, cmap=plt.cm.Spectral)
-    #     plt.title('classification masked')
-    #
-    #     imgdata = BytesIO()
-    #     fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
-    #
-    #     imgdata.seek(0)  # rewind the data
-    #
-    #     drawing = svg2rlg(imgdata)
-    #     renderPDF.draw(drawing, doc, 30, 590)
-    #     fig.clf()
-    #     return doc
+
 
     def Clf_prepare_section3(self,doc,X_v,y_v,convolution_mat,df_sum_mat,score,roi_v,model_path,Image_savePath,dir_path):
         try:
@@ -416,57 +371,6 @@ class ReportModule():
             logging.error("Exception occurred", exc_info=True)
             print(e)
 
-    # def PLSR_prepare_report(self,doc,img,TrainingData,X,y):
-    #     fig = plt.figure(figsize=(4, 4))
-    #     plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
-    #     roi_positions = np.where(TrainingData > 0)
-    #     plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
-    #     plt.title('first RS band and sample points')
-    #     imgdata = BytesIO()
-    #     fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
-    #     imgdata.seek(0)  # rewind the data
-    #     drawing = svg2rlg(imgdata)
-    #     renderPDF.draw(drawing, doc, 150, 350)
-    #
-    #     n_samples = (TrainingData > 0).sum()
-    #     doc.drawString(30, 200,'We have {n} training samples'.format(n=n_samples))  # Subset the image dataset with the training image = X
-    #     # Mask the classes on the training dataset = y
-    #     # These will have n_samples rows
-    #
-    #
-    #     features = pd.DataFrame(X)
-    #
-    #     band_names = []
-    #     for i in range(X.shape[1]):
-    #         # for i in range(0,2500):
-    #         nband = "Band_" + str(i + 1)
-    #         band_names.append(nband)
-    #
-    #     features.columns = band_names
-    #     print(features.shape)
-    #     #Sdoc.drawString(30, 200,'The shape of our features is: '+str(features.shape))
-    #     doc.drawString(30, 220,'The number of Spectra is: '+str(features.shape[0]))
-    #     doc.drawString(30, 230,'The number of bands is: '+str(features.shape[1]))
-    #     #
-    #     features['value'] = y
-    #     features.head()
-    #     # Labels are the values we want to predict
-    #     labels = np.array(features['value'])
-    #
-    #     # Remove the labels from the features
-    #     # axis 1 refers to the columns
-    #     features = features.drop('value', axis=1)
-    #
-    #     # Saving feature names for later use
-    #     feature_list = list(features.columns)
-    #
-    #     # Convert to numpy array
-    #     features = np.array(features)
-    #
-    #     doc.drawString(30,250,'Training Features Shape: '+ str(features.shape))
-    #     doc.drawString(30,270,'Training Labels Shape: '+ str(labels.shape))
-    #
-    #     return doc
 
     def make_rf_reg_report(self,doc,img,RFHelper,dir_path):
         # Display images
@@ -717,16 +621,16 @@ class ReportModule():
             logging.error("Exception occurred", exc_info=True)
             print(e)
 
-    def make_plsr_report(self, doc, img, dir_path, PLSRHelper):
+    def make_plsr_sss_report(self, doc, img, dir_path, PLSR_SSS_Helper):
 
         # self, doc, img, TrainingData, X, mse, msemin, component, y, y_c, y_cv, attribute, importance, prediction, dir_path, reportpath, prediction_map, modelsavepath, img_path, trn_path
         try:
 
-            # reportparameters = PLSRHelper()
+            # reportparameters = PLSR_SSS_Helper()
             # reportparameters = helpermodel
 
-            print(PLSRHelper)
-            print(type(PLSRHelper))
+            print(PLSR_SSS_Helper)
+            print(type(PLSR_SSS_Helper))
 
             os.mkdir(dir_path + "/Graphs")
 
@@ -737,12 +641,12 @@ class ReportModule():
             doc.drawString(30, 705, "DIRECTORIES:")
 
             doc.setFont('Helvetica', 10)
-            doc.drawString(30, 680, "Remote Sensing Image: " + str(PLSRHelper.img_path))
-            doc.drawString(30, 660, "Shape file: " + str(PLSRHelper.tran_path))
-            doc.drawString(30, 640, "Report Save Path: " + str(PLSRHelper.reportpath))
-            doc.drawString(30, 620, "Regression image saved to: " + str(PLSRHelper.prediction_map))
+            doc.drawString(30, 680, "Remote Sensing Image: " + str(PLSR_SSS_Helper.img_path))
+            doc.drawString(30, 660, "Shape file: " + str(PLSR_SSS_Helper.tran_path))
+            doc.drawString(30, 640, "Report Save Path: " + str(PLSR_SSS_Helper.reportpath))
+            doc.drawString(30, 620, "Regression image saved to: " + str(PLSR_SSS_Helper.prediction_map))
             # if modelsavepath != '/':
-            doc.drawString(30, 600, "Model saved to: " + str(PLSRHelper.modelsavepath))
+            doc.drawString(30, 600, "Model saved to: " + str(PLSR_SSS_Helper.modelsavepath))
             # else:
             #     doc.drawString(30, 600, "Model saved to: Model not saved")
 
@@ -751,19 +655,19 @@ class ReportModule():
             mask = np.copy(img[:, :, 0])
             mask[mask > 0.0] = 1.0  # all actual pixels have a value of 1.0
             # plt.imshow(mask)
-            prediction_ = PLSRHelper.prediction * mask
+            prediction_ = PLSR_SSS_Helper.prediction * mask
 
             if img.shape[0] > img.shape[1]:
                 fig = plt.figure(figsize=(5, 4))
                 plt.subplot(121)
                 plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
-                roi_positions = np.where(PLSRHelper.train_data > 0)
+                roi_positions = np.where(PLSR_SSS_Helper.train_data > 0)
                 plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
                 plt.title('first RS band and sample points', fontsize=8)
 
                 plt.subplot(122)
-                plt.imshow(prediction_, cmap=plt.cm.Spectral, vmin=PLSRHelper.y.min(), vmax=PLSRHelper.y.max())
-                plt.title('Prediction: ' + PLSRHelper.attribute, fontsize=8)
+                plt.imshow(prediction_, cmap=plt.cm.Spectral, vmin=PLSR_SSS_Helper.y.min(), vmax=PLSR_SSS_Helper.y.max())
+                plt.title('Prediction: ' + PLSR_SSS_Helper.attribute, fontsize=8)
                 plt.colorbar()
                 imgdata = BytesIO()
                 plt.savefig(path + "RS image-first_band.png", dpi=300)
@@ -780,12 +684,12 @@ class ReportModule():
                 fig = plt.figure(figsize=(5, 4))
                 plt.subplot(121)
                 plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
-                roi_positions = np.where(PLSRHelper.train_data > 0)
+                roi_positions = np.where(PLSR_SSS_Helper.train_data > 0)
                 plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
                 plt.title('first RS band and sample points')
 
                 plt.subplot(122)
-                plt.imshow(prediction_, cmap=plt.cm.Spectral, vmin=PLSRHelper.y.min(), vmax=PLSRHelper.y.max())
+                plt.imshow(prediction_, cmap=plt.cm.Spectral, vmin=PLSR_SSS_Helper.y.min(), vmax=PLSR_SSS_Helper.y.max())
                 plt.title('Prediction')
                 plt.colorbar()
                 imgdata = BytesIO()
@@ -799,17 +703,17 @@ class ReportModule():
                 plt.close(fig)
                 doc.showPage()
 
-            n_samples = (PLSRHelper.train_data > 0).sum()
+            n_samples = (PLSR_SSS_Helper.train_data > 0).sum()
             # doc.drawString(30, 720, 'We have {n} training samples'.format(n=n_samples))
 
             # Subset the image dataset with the training image = X
             # Mask the classes on the training dataset = y
             # These will have n_samples rows
 
-            features = pd.DataFrame(PLSRHelper.X)
+            features = pd.DataFrame(PLSR_SSS_Helper.X)
 
             band_names = []
-            for i in range(PLSRHelper.X.shape[1]):
+            for i in range(PLSR_SSS_Helper.X.shape[1]):
                 # for i in range(0,2500):
                 nband = "Band_" + str(i + 1)
                 band_names.append(nband)
@@ -827,12 +731,12 @@ class ReportModule():
                            'The Image Extend: ' + str(img.shape[0]) + " x " + str(img.shape[1]) + " (Rows x Columns)")
             doc.drawString(30, 680, 'The number of bands is: ' + str(features.shape[1]))
             # doc.drawString(30, 680,'The shape of our features is: '+str(features.shape))
-            doc.drawString(30, 660, 'Selected Attribute: ' + str(PLSRHelper.attribute))
+            doc.drawString(30, 660, 'Selected Attribute: ' + str(PLSR_SSS_Helper.attribute))
             doc.drawString(30, 640, 'The number of Sample is: ' + str(features.shape[0]))
             doc.drawString(30, 620, '---------------------------------------------------------')
 
             #
-            features['value'] = PLSRHelper.y
+            features['value'] = PLSR_SSS_Helper.y
             features.head()
             # Labels are the values we want to predict
             labels = np.array(features['value'])
@@ -854,14 +758,14 @@ class ReportModule():
 
             #
             #  doc.showPage()
-            suggested_comp = PLSRHelper.msemin + 1
+            suggested_comp = PLSR_SSS_Helper.msemin + 1
             print("Suggested number of components: ", suggested_comp)
             doc.drawString(30, 560, "Selected number of PLS components: " + str(suggested_comp))
 
             fig = plt.figure(figsize=(5, 4))
             with plt.style.context(('ggplot')):
-                plt.plot(PLSRHelper.component, np.array(PLSRHelper.mse), '-v', color='blue', mfc='blue')
-                plt.plot(PLSRHelper.component[PLSRHelper.msemin], np.array(PLSRHelper.mse)[PLSRHelper.msemin], 'P',
+                plt.plot(PLSR_SSS_Helper.component, np.array(PLSR_SSS_Helper.mse), '-v', color='blue', mfc='blue')
+                plt.plot(PLSR_SSS_Helper.component[PLSR_SSS_Helper.msemin], np.array(PLSR_SSS_Helper.mse)[PLSR_SSS_Helper.msemin], 'P',
                          ms=10, mfc='red')
                 plt.xlabel('Number of PLS components')
                 plt.ylabel('MSE')
@@ -879,12 +783,12 @@ class ReportModule():
             plt.close(fig)
             doc.showPage()
 
-            score_c = r2_score(PLSRHelper.y, PLSRHelper.y_c)
-            score_cv = r2_score(PLSRHelper.y, PLSRHelper.y_cv)
+            score_c = r2_score(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_c)
+            score_cv = r2_score(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_cv)
 
             # Calculate mean squared error for calibration and cross validation
-            mse_c = mean_squared_error(PLSRHelper.y, PLSRHelper.y_c)
-            mse_cv = mean_squared_error(PLSRHelper.y, PLSRHelper.y_cv)
+            mse_c = mean_squared_error(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_c)
+            mse_cv = mean_squared_error(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_cv)
 
             #   print("2 HERE!!!!!! mse_cv"+str(mse_cv))
 
@@ -899,8 +803,8 @@ class ReportModule():
 
             imp = {}
             for i in range(features.shape[1]):
-                print('Band {}: {}'.format(i + 1, round(PLSRHelper.importance[i], 2)))
-                imp['Band{}'.format(i + 1)] = round(PLSRHelper.importance[i], 2)
+                print('Band {}: {}'.format(i + 1, round(PLSR_SSS_Helper.importance[i], 2)))
+                imp['Band{}'.format(i + 1)] = round(PLSR_SSS_Helper.importance[i], 2)
 
             data = [(k, v) for k, v in imp.items()]
 
@@ -974,14 +878,14 @@ class ReportModule():
             doc.drawString(30, 785, 'Section : Validation')
             doc.line(20, 770, 570, 770)
 
-            z = np.polyfit(PLSRHelper.y, PLSRHelper.y_c, 1)
+            z = np.polyfit(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_c, 1)
             with plt.style.context(('ggplot')):
                 fig, ax = plt.subplots(figsize=(5, 5))
-                ax.scatter(PLSRHelper.y_c, PLSRHelper.y, c='red', edgecolors='k')
+                ax.scatter(PLSR_SSS_Helper.y_c, PLSR_SSS_Helper.y, c='red', edgecolors='k')
                 # Plot the best fit line
-                ax.plot(np.polyval(z, PLSRHelper.y), PLSRHelper.y, c='blue', linewidth=1)
+                ax.plot(np.polyval(z, PLSR_SSS_Helper.y), PLSR_SSS_Helper.y, c='blue', linewidth=1)
                 # Plot the ideal 1:1 line
-                ax.plot(PLSRHelper.y, PLSRHelper.y, color='green', linewidth=1)
+                ax.plot(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y, color='green', linewidth=1)
                 plt.title('$R^{2}$ (CV): ' + str(score_cv))
                 plt.xlabel('Predicted')
                 plt.ylabel('Measured')
@@ -998,7 +902,7 @@ class ReportModule():
             # In[16]:
 
             # Calculate the absolute errors
-            errors = abs(PLSRHelper.y - PLSRHelper.y_cv)
+            errors = abs(PLSR_SSS_Helper.y - PLSR_SSS_Helper.y_cv)
             # Print out the mean absolute error (mae)
 
             # Print out the mean absolute error (mae)
@@ -1009,6 +913,7 @@ class ReportModule():
             doc.drawString(30, 250, 'n of the test data: ' + str((len(labels))))
 
             print('Mean of the variable: {:.2f}'.format(np.mean(labels)))
+
             doc.drawString(30, 230, 'Mean of the Samples: ' + str(round((np.mean(labels)), 2)))
 
             print('Standard deviation of the variable: {:.2f}'.format(np.std(labels)))
@@ -1044,15 +949,756 @@ class ReportModule():
             doc.drawString(30, 50, '----------------------------')
 
             # The coefficient of determination: 1 is perfect prediction
-            print('Coefficient of determination r²: {:.2f}'.format(r2_score(PLSRHelper.y, PLSRHelper.y_cv)))
+            print('Coefficient of determination r²: {:.2f}'.format(r2_score(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_cv)))
             doc.drawString(30, 30,
-                           'Coefficient of determination r²: ' + str(round(r2_score(PLSRHelper.y, PLSRHelper.y_cv), 2)))
+                           'Coefficient of determination r²: ' + str(round(r2_score(PLSR_SSS_Helper.y, PLSR_SSS_Helper.y_cv), 2)))
             #
             return doc
 
         except ValueError as e:
             logging.error("Exception occurred", exc_info=True)
             print(e)
+
+    def make_plsr_lds_report(self,doc,dir_path,PLSR_LDS_Helper):
+
+        os.mkdir(dir_path+"/Graphs")
+        path = dir_path +"/Graphs/"
+        doc.setFont('Helvetica-Bold', 14)
+        doc.drawString(30, 705, "DIRECTORIES:")
+
+        doc.setFont('Helvetica', 10)
+        doc.drawString(30, 680, "Remote Sensing Image: " + str(PLSR_LDS_Helper.img_path))
+        doc.drawString(30, 660, "Shape file: " + str(PLSR_LDS_Helper.tran_path))
+        doc.drawString(30, 640, "Report Save Path: " + str(PLSR_LDS_Helper.reportpath))
+        doc.drawString(30, 620, "Regression image saved to: " + str(PLSR_LDS_Helper.prediction_map))
+        # if modelsavepath != '/':
+        doc.drawString(30, 600, "Model saved to: " + str(PLSR_LDS_Helper.modelsavepath))
+
+        doc.line(20, 580, 570, 580)
+
+        mask = np.copy(PLSR_LDS_Helper.img[:, :, 0])
+        mask[mask > 0.0] = 1.0  # all actual pixels have a value of 1.0
+        prediction_ = PLSR_LDS_Helper.prediction * mask
+
+
+        if PLSR_LDS_Helper.img.shape[0] > PLSR_LDS_Helper.img.shape[1]:
+            fig = plt.figure(figsize=(5, 4))
+            plt.subplot(121)
+            print(PLSR_LDS_Helper.img.shape)
+            plt.imshow(PLSR_LDS_Helper.img[:, :, 0], cmap=plt.cm.Greys_r)
+            roi_positions = np.where(PLSR_LDS_Helper.train_data > 0)
+            plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+            plt.title('RS image - first band')
+            plt.subplot(122)
+            plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+            plt.title('Training Image')
+            # plt.show()
+            imgdata = BytesIO()
+            fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+            imgdata.seek(0)  # rewind the data
+            drawing = svg2rlg(imgdata)
+            renderPDF.draw(drawing, doc, 50, 160)
+            # else:
+            #     renderPDF.draw(drawing, doc, 50, 250)
+            fig.clf()
+            plt.close(fig)
+            fig = plt.figure(figsize=(5, 4))
+            plt.imshow(PLSR_LDS_Helper.prediction, cmap=plt.cm.Spectral)
+            plt.colorbar()
+            plt.title('Prediction')
+            # plt.show()
+            imgdata = BytesIO()
+            fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+            imgdata.seek(0)  # rewind the data
+            drawing = svg2rlg(imgdata)
+            renderPDF.draw(drawing, doc, 400, 160)
+            fig.clf()
+            plt.close(fig)
+            doc.showPage()
+
+        if PLSR_LDS_Helper.img.shape[0] <= PLSR_LDS_Helper.img.shape[1]:
+            fig = plt.figure(figsize=(5, 4))
+            plt.subplot(121)
+            print(PLSR_LDS_Helper.img.shape)
+            plt.imshow(PLSR_LDS_Helper.img[:, :, 0], cmap=plt.cm.Greys_r)
+            roi_positions = np.where(PLSR_LDS_Helper.train_data > 0)
+            plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+            plt.title('RS image - first band')
+            plt.subplot(122)
+            plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+            plt.title('Training Image')
+            # plt.show()
+            imgdata = BytesIO()
+            fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+            imgdata.seek(0)  # rewind the data
+            drawing = svg2rlg(imgdata)
+            renderPDF.draw(drawing, doc, 50, 160)
+            # else:
+            #     renderPDF.draw(drawing, doc, 50, 250)
+            fig.clf()
+            plt.close(fig)
+            fig = plt.figure(figsize=(5, 4))
+            plt.imshow(PLSR_LDS_Helper.prediction, cmap=plt.cm.Spectral)
+            plt.colorbar()
+            plt.title('Prediction')
+            # plt.show()
+            imgdata = BytesIO()
+            fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+            imgdata.seek(0)  # rewind the data
+            drawing = svg2rlg(imgdata)
+            renderPDF.draw(drawing, doc, 100, 160)
+            fig.clf()
+            plt.close(fig)
+            doc.showPage()
+
+        roi_positions = np.where(PLSR_LDS_Helper.train_data > 0)
+        plt.imshow(PLSR_LDS_Helper.img[:, :, 0], cmap=plt.cm.Greys_r)
+        plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+        plt.title('RS image - first band')
+        plt.savefig(path + "RS image-first_band.png", dpi=300)
+        plt.clf()
+
+        plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+        plt.title('Training Image')
+        plt.savefig(path + "Training_Image.png", dpi=300)
+        plt.clf()
+
+        plt.imshow(PLSR_LDS_Helper.prediction, cmap=plt.cm.Spectral)
+        plt.colorbar()
+        plt.title('Prediction')
+        plt.savefig(path + "Prediction.png", dpi=300)
+        plt.clf()
+
+        n_samples = (PLSR_LDS_Helper.train_data > 0).sum()
+        print(
+            'We have {n} training samples'.format(n=n_samples))  # Subset the image dataset with the training image = X
+
+        print('The shape of our features is:', PLSR_LDS_Helper.features.shape)
+        print('The number of Spectra is:', PLSR_LDS_Helper.features.shape[0])
+        print('The number of bands is:', PLSR_LDS_Helper.features.shape[1])
+
+        doc.line(20, 810, 570, 810)
+        doc.setLineWidth(.3)
+        doc.setFont('Helvetica-Bold', 14)
+        doc.drawString(30, 785, 'Section : General Information and Training')
+        doc.line(20, 770, 570, 770)
+        doc.setFont('Helvetica', 10)
+        doc.drawString(30, 700,
+                       'The Image Extend: ' + str(PLSR_LDS_Helper.img.shape[0]) + " x " + str(PLSR_LDS_Helper.img.shape[1]) + " (Rows x Columns)")
+        doc.drawString(30, 680, 'The number of bands is: ' + str(PLSR_LDS_Helper.features.shape[1]))
+        # doc.drawString(30, 680,'The shape of our features is: '+str(features.shape))
+        doc.drawString(30, 660, 'Selected Attribute: ' + str(PLSR_LDS_Helper.attribute))
+        doc.drawString(30, 640, 'The number of Sample is: ' + str(PLSR_LDS_Helper.features.shape[0]))
+        doc.drawString(30, 620, '---------------------------------------------------------')
+
+
+
+
+        # from sklearn import preprocessing
+        #
+        # min_max_scaler = preprocessing.MinMaxScaler()
+        #
+        # xscaled = min_max_scaler.fit_transform(features)
+        # features_ = pd.DataFrame(xscaled)
+        #
+        # features_.transpose().plot(figsize=(20, 7))
+        # plt.legend(bbox_to_anchor=(0.1, -0.1), loc='upper left', ncol=7)
+        # plt.title('Reference Spectra')
+        # plt.plot()
+        #
+        #
+        print('Training Features Shape:', PLSR_LDS_Helper.train_features.shape)
+        print('Training Labels Shape:', PLSR_LDS_Helper.train_labels.shape)
+        print('Testing Features Shape:', PLSR_LDS_Helper.test_features.shape)
+        print('Testing Labels Shape:', PLSR_LDS_Helper.test_labels.shape)
+        #
+        msemin = np.argmin(PLSR_LDS_Helper.mse)
+        suggested_comp = msemin + 1
+        print("Suggested number of components: ", suggested_comp)
+
+        fig = plt.figure(figsize=(5, 4))
+        with plt.style.context(('ggplot')):
+            plt.plot(PLSR_LDS_Helper.component, np.array(PLSR_LDS_Helper.mse), '-v', color='blue', mfc='blue')
+            plt.plot(PLSR_LDS_Helper.component[msemin], np.array(PLSR_LDS_Helper.mse)[msemin], 'P', ms=10, mfc='red')
+            plt.xlabel('Number of PLS components')
+            plt.ylabel('MSE')
+            plt.title('PLSR MSE vs. Components')
+            plt.xlim(left=-1)
+            plt.savefig(path + "PLSR MSE vs. Components.png", dpi=300)
+
+        # plt.show()
+        imgdata = BytesIO()
+        fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+        imgdata.seek(0)  # rewind the data
+        drawing = svg2rlg(imgdata)
+        renderPDF.draw(drawing, doc, 50, 150)
+        fig.clf()
+        plt.close(fig)
+        doc.showPage()
+
+        # print(sorted_imp)
+        imp = {}
+        for i in range(PLSR_LDS_Helper.features.shape[1]):
+            print('Band {}: {}'.format(i + 1, round(PLSR_LDS_Helper.importance[i], 2)))
+            imp['Band{}'.format(i + 1)] = round(PLSR_LDS_Helper.importance[i], 2)
+
+        data = [(k, v) for k, v in imp.items()]
+
+        # dummy = [('Band',1.33),('Band',5),('Band',4),('Band',2),('Band',6),('Band',8),('Band',43),('Band',3),('Band',113),('Band',233),('Band',13),('Band',133)]
+        # data.extend(dummy)
+
+        data2 = data[:]
+
+        data2.sort(key=lambda x: x[1], reverse=True)
+
+        data.insert(0, ("Band", "Importance"))
+        data2.insert(0, ("Band", "Importance"))
+        doc.setFont('Helvetica-Bold', 14)
+        doc.drawString(30, 710, "Band importance (left: ordered by band number | right: ordered by importance):")
+        doc.setFont('Helvetica', 10)
+        if (len(data) > 21):
+            chunks = (self.chunks(data, 20))
+            ordered_chunks = (self.chunks(data2, 20))
+            iterationNumer = 0
+            for unorder, ordered in zip(chunks, ordered_chunks):
+                if iterationNumer != 0:
+                    unorder.insert(0, ("Band", "Importance"))
+                    ordered.insert(0, ("Band", "Importance"))
+                unordered_table = Table(unorder)
+                ordered_table = Table(ordered)
+                unordered_table.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                                     ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+                ordered_table.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                                   ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+                if iterationNumer == 0:
+                    unordered_table.wrapOn(doc, 60, 100)
+                    unordered_table.drawOn(doc, 60, 100)
+
+                    ordered_table.wrapOn(doc, 280, 100)
+                    ordered_table.drawOn(doc, 280, 100)
+                else:
+                    unordered_table.wrapOn(doc, 60, 400)
+                    unordered_table.drawOn(doc, 60, 400)
+
+                    ordered_table.wrapOn(doc, 280, 400)
+                    ordered_table.drawOn(doc, 280, 400)
+
+                columns = [""]
+                ordered_table = Table(columns)
+                unordered_table = Table(columns)
+                doc.showPage()
+                iterationNumer += 1
+
+        else:
+            table = Table(data)
+            table2 = Table(data2)
+
+            table.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                       ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+            table2.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+            table.wrapOn(doc, 0, 0)
+            table.drawOn(doc, 60, 100)
+
+            table2.wrapOn(doc, 60, 100)
+            table2.drawOn(doc, 280, 100)
+            doc.showPage()
+
+        #
+        errors = abs(PLSR_LDS_Helper.predictions_test_ds - PLSR_LDS_Helper.test_labels)
+        # Print out the mean absolute error (mae)
+
+        # Print out the mean absolute error (mae)
+
+        print('-------------')
+        print('n of the test data: {}'.format(len(PLSR_LDS_Helper.test_labels)))
+        print('Mean of the variable: {:.2f}'.format(np.mean(PLSR_LDS_Helper.labels)))
+        print('Standard deviation of the variable: {:.2f}'.format(np.std(PLSR_LDS_Helper.labels)))
+        print('-------------')
+        print('Mean Absolute Error: {:.2f}'.format(np.mean(errors)))
+
+        mse = mean_squared_error(PLSR_LDS_Helper.test_labels, PLSR_LDS_Helper.predictions_test_ds)
+
+        print('Mean squared error: '+ str(round(mse,2)))
+        print('RMSE: '+str(round(np.sqrt(mse),2)))
+        #
+        mape = 100 * (errors / PLSR_LDS_Helper.test_labels)
+        # Calculate and display accuracy
+        accuracy = 100 - np.mean(mape)
+        print('mean absolute percentage error (MAPE) / Accuracy: {:.2f}'.format(accuracy), '%.')
+        print('-------------')
+        # The coefficient of determination: 1 is perfect prediction
+        print('Coefficient of determination r²: {:.2f}'.format(r2_score(PLSR_LDS_Helper.test_labels, PLSR_LDS_Helper.predictions_test_ds)))
+        # #
+        doc.drawString(30, 785, 'n of the test data: {}'.format(len(PLSR_LDS_Helper.test_labels)))
+        doc.drawString(30, 765,'Mean of the variable: {:.2f}'.format(np.mean(PLSR_LDS_Helper.labels)))
+        doc.drawString(30, 745,'Standard deviation of the variable: {:.2f}'.format(np.std(PLSR_LDS_Helper.labels)))
+        doc.drawString(30, 735,'------------------------------------------------------')
+        doc.drawString(30, 715,'Mean Absolute Error: {:.2f}'.format(np.mean(errors)))
+
+        mse = mean_squared_error(PLSR_LDS_Helper.test_labels, PLSR_LDS_Helper.predictions_test_ds)
+        doc.drawString(30, 685,'Mean squared error: {:.2f}'.format(mse))
+        doc.drawString(30, 670,'RMSE: {:.2f}'.format(np.sqrt(mse)))
+
+        mape = 100 * (errors / PLSR_LDS_Helper.test_labels)
+        # Calculate and display accuracy
+        accuracy = 100 - np.mean(mape)
+        doc.drawString(30, 655,"mean absolute percentage error (MAPE) / Accuracy: "+ str(round(accuracy,2))+" %")
+        doc.drawString(30, 640,'----------------------------------------------------')
+
+
+        fig, ax = plt.subplots(figsize=(5,5))
+        ax.scatter(PLSR_LDS_Helper.test_labels, PLSR_LDS_Helper.predictions_test_ds)
+        ax.plot([PLSR_LDS_Helper.test_labels.min(), PLSR_LDS_Helper.test_labels.max()], [PLSR_LDS_Helper.test_labels.min(), PLSR_LDS_Helper.test_labels.max()], 'k--', lw=1)
+        ax.set_xlabel('Measured')
+        ax.set_ylabel('Predicted')
+        imgdata = BytesIO()
+        plt.savefig(path + "R2CV", dpi=300)
+        fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+        imgdata.seek(0)  # rewind the data
+        drawing = svg2rlg(imgdata)
+        renderPDF.draw(drawing, doc, 50, 240)
+        fig.clf()
+        plt.close(fig)
+
+        # mask = np.copy(img[:, :, 0])
+        # mask[mask > 0.0] = 1.0  # all actual pixels have a value of 1.0
+
+        # plot mask
+
+        # plt.imshow(mask)
+
+
+        # mask classification an plot
+
+        # prediction_ = prediction * mask
+        #
+        # plt.subplot(121)
+        # plt.imshow(prediction, cmap=plt.cm.Spectral, vmax=prediction.mean() + prediction.std() * 2,
+        #            vmin=prediction.mean() - prediction.std() * 2)
+        # plt.title('prediction unmasked')
+        #
+        # plt.subplot(122)
+        # plt.imshow(prediction_, cmap=plt.cm.Spectral, vmax=prediction_.mean() + prediction_.std() * 2,
+        #            vmin=prediction_.mean() - prediction_.std() * 2)
+        # plt.title('prediction masked')
+        #
+        # plt.show()
+        #
+        #
+        # plt.subplot(121)
+        # plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
+        # plt.title('RS image - first band')
+        #
+        # plt.subplot(122)
+        # plt.imshow(prediction, cmap=plt.cm.Spectral, vmax=prediction_.mean() + prediction_.std() * 2,
+        #            vmin=prediction_.mean() - prediction_.std() * 2)
+        # plt.colorbar()
+        #
+        # plt.title('Prediction')
+        #
+        # plt.show()
+        #
+        return doc
+
+    def make_rfr_sss_report(self,doc,reportpath,dir_path,train_data,prediction_map,modelsavepath,img_path,TrainingData,img,attributes,prediction, y_c, y_cv, RFR):
+
+        try:
+            os.mkdir(dir_path + "/Graphs")
+
+            path = dir_path + "/Graphs/"
+
+            width, height = A4
+           # print("here........."+reportpath)
+            print(prediction_map)
+            print(modelsavepath)
+            print(img_path)
+            print(train_data)
+            doc.setFont('Helvetica-Bold', 14)
+            doc.drawString(30, 700,"DIRECTORIES:")
+
+            doc.setFont('Helvetica', 7)
+            doc.drawString(30, 680, "Remote Sensing Image: " + img_path)
+            doc.drawString(30, 660, "Shape file: " + train_data)
+            doc.drawString(30, 640, "Report Save Path: "+ reportpath)
+            doc.drawString(30, 620, "Regression image saved to: " + prediction_map)
+            if modelsavepath !='/':
+                doc.drawString(30, 600, "Model saved to: "+modelsavepath)
+            else:
+                doc.drawString(30, 600, "Model saved to: Model not saved")
+
+            doc.line(20, 580, 570, 580)
+
+
+
+            n_samples = (TrainingData > 0).sum()
+            print('We have {n} training samples'.format(
+                n=n_samples))  # Subset the image dataset with the training image = X
+
+            roi_positions = np.where(TrainingData > 0)
+
+            if img.shape[0] > img.shape[1]:
+                fig = plt.figure(figsize=(5, 4))
+                plt.subplot(121)
+                print(img.shape)
+                plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
+                plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+                plt.title('RS image - first band')
+                plt.subplot(122)
+                plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+                plt.title('Training Image')
+                #plt.show()
+                imgdata = BytesIO()
+                fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+                imgdata.seek(0)  # rewind the data
+                drawing = svg2rlg(imgdata)
+                renderPDF.draw(drawing, doc, 50, 160)
+            # else:
+            #     renderPDF.draw(drawing, doc, 50, 250)
+                fig.clf()
+                plt.close(fig)
+                fig = plt.figure(figsize=(5, 4))
+                plt.imshow(prediction, cmap=plt.cm.Spectral)
+                plt.colorbar()
+                plt.title('Prediction')
+               # plt.show()
+                imgdata = BytesIO()
+                fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+                imgdata.seek(0)  # rewind the data
+                drawing = svg2rlg(imgdata)
+                renderPDF.draw(drawing, doc, 400, 160)
+                fig.clf()
+                plt.close(fig)
+                doc.showPage()
+
+
+            if img.shape[0]<=  img.shape[1]:
+                fig = plt.figure(figsize=(6, 4))
+                plt.subplot(121)
+                print(img.shape)
+                plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
+                plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+                plt.title('RS image - first band')
+                plt.subplot(122)
+                plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+                plt.title('Training Image')
+                #plt.show()
+                imgdata = BytesIO()
+                fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+                imgdata.seek(0)  # rewind the data
+                drawing = svg2rlg(imgdata)
+                renderPDF.draw(drawing, doc, 50, 360)
+                # else:
+                #     renderPDF.draw(drawing, doc, 50, 250)
+                fig.clf()
+                plt.close(fig)
+                fig = plt.figure(figsize=(5, 4))
+                plt.imshow(prediction, cmap=plt.cm.Spectral)
+                plt.colorbar()
+                plt.title('Prediction')
+               # plt.show()
+                imgdata = BytesIO()
+                fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+                imgdata.seek(0)  # rewind the data
+                drawing = svg2rlg(imgdata)
+                renderPDF.draw(drawing, doc, 70, 60)
+                fig.clf()
+                plt.close(fig)
+                doc.showPage()
+
+            plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
+            plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+            plt.title('RS image - first band')
+            plt.savefig(path + "RS image-first_band.png", dpi=300)
+            plt.clf()
+
+            plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+            plt.title('Training Image')
+            plt.savefig(path + "Training_Image.png", dpi=300)
+            plt.clf()
+
+            plt.imshow(prediction, cmap=plt.cm.Spectral)
+            plt.colorbar()
+            plt.title('Prediction')
+            plt.savefig(path + "Prediction.png", dpi=300)
+            plt.clf()
+
+
+
+
+            settings_sns = {'axes.facecolor': 'white',
+                            'axes.edgecolor': '0',
+                            'axes.grid': True,
+                            'axes.axisbelow': True,
+                            'axes.labelcolor': '.15',
+                            'figure.facecolor': 'white',
+                            'grid.color': '.8',
+                            'grid.linestyle': '--',
+                            'text.color': '0',
+                            'xtick.color': '0',
+                            'ytick.color': '0',
+                            'xtick.direction': 'in',
+                            'ytick.direction': 'in',
+                            'lines.solid_capstyle': 'round',
+                            'patch.edgecolor': 'w',
+                            'patch.force_edgecolor': True,
+                            'image.cmap': 'Greys',
+                            'font.family': ['serif'],
+                            'font.sans-serif': ['Arial', 'Liberation Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
+                                                'sans-serif'],
+                            'xtick.bottom': True,
+                            'xtick.top': True,
+                            'ytick.left': True,
+                            'ytick.right': True,
+                            'axes.spines.left': True,
+                            'axes.spines.bottom': True,
+                            'axes.spines.right': True,
+                            'axes.spines.top': True}
+
+            X = img[TrainingData > 0, :]
+            y = TrainingData[TrainingData > 0]
+
+            features = pd.DataFrame(X)
+
+            band_names = []
+            for i in range(X.shape[1]):
+                # for i in range(0,2500):
+                nband = "Band_" + str(i + 1)
+                band_names.append(nband)
+
+            # print("*******************")
+            # print(band_names)
+            # print("*******************")
+
+            features.columns = band_names
+
+            print('The shape of our features is:', features.shape)
+            print('The number of Spectra is:', features.shape[0])
+            print('The number of bands is:', features.shape[1])
+
+            features['value'] = y
+
+            # min_max_scaler = preprocessing.MinMaxScaler()
+            #
+            # xscaled = min_max_scaler.fit_transform(features)
+            # features_ = pd.DataFrame(xscaled)
+            #
+            # features_.transpose().plot(figsize=(20, 7))
+            # plt.legend(bbox_to_anchor=(0.1, -0.1), loc='upper left', ncol=7)
+            # plt.title('Reference Spectra')
+            # plt.plot()
+            #
+            # # # In[10]:
+
+            # Labels are the values we want to predict
+            labels = np.array(features['value'])
+
+            # Remove the labels from the features
+            # axis 1 refers to the columns
+            features = features.drop('value', axis=1)
+
+            # Saving feature names for later use
+            feature_list = list(features.columns)
+
+            # Convert to numpy array
+            features = np.array(features)
+
+            print('Training Features Shape: ', features.shape)
+            print('Training Labels Shape: ', labels.shape)
+
+
+
+            doc.setFont('Helvetica-Bold', 14)
+            doc.drawString(30, 730, 'Section 1:')
+            doc.setFont('Helvetica', 14)
+            doc.drawString(30, 710, "Image extent: " + str(img.shape[0]) +" x "+ str(img.shape[1]) + " (Rows x Columns)")
+            doc.drawString(30, 690, "Number of Bands: " + str(features.shape[1]))
+            doc.drawString(30, 670, "Field name (shape file) of your classes: " + attributes)
+            doc.setFont('Helvetica', 14)
+            doc.drawString(30, 650, " Random Forrest Training")
+            doc.setFont('Helvetica', 14)
+            doc.drawString(30, 630, " Number of Tress: " )
+            doc.drawString(30, 610, " Number of samples: " + str(n_samples))
+            #doc.drawString(30, 590, " Split size for Test: " + str(RFHelper.helper.SplitSize))
+            #doc.drawString(30, 570, " Training samples: " + str(labels.shape[0]))
+            #doc.drawString(30, 550, " Test sample: " + str(RFHelper.helper.TestSample))
+
+            #doc.drawString(30, 530, "Co efficient of determination R^2 of the prediction : " + RFHelper.helper.Coeff)
+            doc.setFont('Helvetica-Bold', 14)
+            doc.drawString(30, 510, "left: ordered by band number| right: ordered by importance ")
+
+            imp = {}
+            for i in range(len(RFR.feature_importances_)):
+                importance = round(RFR.feature_importances_[i] * 100, 2)
+                print('Band {}: {}'.format(i + 1, importance))
+                imp['Band{}'.format(i + 1)] = importance
+
+            data = [(k, v) for k, v in imp.items()]
+            data2 = data[:]
+
+            data2.sort(key=lambda x: x[1], reverse=True)
+
+            data.insert(0, ("Band", "Importance"))
+            data2.insert(0, ("Band", "Importance"))
+
+            doc.setFont('Helvetica', 10)
+
+            if (len(data) > 21):
+                chunks = (self.chunks(data, 20))
+                ordered_chunks = (self.chunks(data2, 20))
+                iterationNumer = 0
+                for unorder, ordered in zip(chunks, ordered_chunks):
+                    if iterationNumer != 0:
+                        unorder.insert(0, ("Band", "Importance"))
+                        ordered.insert(0, ("Band", "Importance"))
+                    unordered_table = Table(unorder)
+                    ordered_table = Table(ordered)
+                    unordered_table.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                                         ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+                    ordered_table.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                                       ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+                    if iterationNumer == 0:
+                        unordered_table.wrapOn(doc, 60, 100)
+                        unordered_table.drawOn(doc, 60, 100)
+
+                        ordered_table.wrapOn(doc, 280, 100)
+                        ordered_table.drawOn(doc, 280, 100)
+                    else:
+                        unordered_table.wrapOn(doc, 60, 400)
+                        unordered_table.drawOn(doc, 60, 400)
+
+                        ordered_table.wrapOn(doc, 280, 400)
+                        ordered_table.drawOn(doc, 280, 400)
+
+                    columns = [""]
+                    ordered_table = Table(columns)
+                    unordered_table = Table(columns)
+                    doc.showPage()
+                    iterationNumer += 1
+
+            else:
+                table = Table(data)
+                table2 = Table(data2)
+
+                table.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                           ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+                table2.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.25, colors.black),
+                                            ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black)]))
+
+                table.wrapOn(doc, 0, 0)
+                table.drawOn(doc, 60, 100)
+
+                table2.wrapOn(doc, 60, 100)
+                table2.drawOn(doc, 280, 100)
+                doc.showPage()
+
+            score_c = r2_score(y, y_c)
+            score_cv = r2_score(y, y_cv)
+            mse_c = mean_squared_error(y, y_c)
+            mse_cv = mean_squared_error(y, y_cv)
+
+            errors = abs(y_cv - labels)
+            # Print out the mean absolute error (mae)
+
+            # Print out the mean absolute error (mae)
+
+            print('-------------')
+            print('n of the test data: {}'.format(len(labels)))
+            print('Mean of the variable: {:.2f}'.format(np.mean(labels)))
+            print('Standard deviation of the variable: {:.2f}'.format(np.std(labels)))
+            print('-------------')
+            print('Mean Absolute Error: {:.2f}'.format(np.mean(errors)))
+
+            mse = mean_squared_error(labels, y_cv)
+            print('Mean squared error: {:.2f}'.format(mse))
+            print('RMSE: {:.2f}'.format(np.sqrt(mse)))
+            print(
+                'RPD: {:.2f} | How often does RMSE of Prediction fit in the Standard Deviation of the samples'.format(
+                    np.std(labels) / np.sqrt(mse)))
+
+            doc.drawString(30, 770, "n of the data: " + str(len(labels)))
+            doc.drawString(30, 750, "Mean of the Variable : " + str(np.mean(labels)))
+            doc.drawString(30, 730, "Standard Deviation of the Variable: " + str(round(np.std(labels), 2)))
+            doc.drawString(30, 710, "----------------------------------------")
+            doc.setFont('Helvetica', 14)
+            doc.drawString(30, 670, " Mean Absolute Error : " + str(round(np.mean(errors), 2)))
+            doc.drawString(30, 650, " Mean Squared Error:" + str(round(mse, 2)))
+            doc.drawString(30, 630, " RMSE:" + str(round(np.sqrt(mse), 2)))
+
+            doc.drawString(30, 600, 'RPD:'+ str(round(np.std(labels) / np.sqrt(mse),2)))
+            doc.setFont('Helvetica', 10)
+            doc.drawString(30, 580,'How often does RMSE of Prediction fit in the Standard Deviation of the samples')
+            doc.drawString(30, 560, "----------------------------------------")
+            mape = 100 * (errors / labels)
+            # Calculate and display accuracy
+            accuracy = 100 - np.mean(mape)
+            print('mean absolute percentage error (MAPE) / Accuracy: {:.2f}'.format(accuracy), '%.')
+            print('-------------')
+            doc.setFont('Helvetica', 14)
+            doc.drawString(30, 530,'mean absolute percentage error (MAPE) / Accuracy:'+ str(round(accuracy,2))+ ' %.')
+            # The coefficient of determination: 1 is perfect prediction
+            print('Coefficient of determination r²: {:.2f}'.format(r2_score(labels, y_cv)))
+            doc.drawString(30, 510,'Coefficient of determination r²: '+ str(round(r2_score(labels, y_cv),2)))
+
+
+            '''
+            To put our predictions in perspective, we can calculate an accuracy using
+            the mean average percentage error subtracted from 100 %.
+            '''
+
+            # Calculate mean absolute percentage error (MAPE)
+
+
+
+            print('R2 calib: %5.3f' % score_c)
+            print('R2 LOOCV: %5.3f' % score_cv)
+            print('MSE calib: %5.3f' % mse_c)
+            print('MSE LOOCV: %5.3f' % mse_cv)
+
+            # In[12]:
+            #
+            # Plot regression and figures of merit
+            rangey = max(y) - min(y)
+            rangex = max(y_c) - min(y_c)
+
+            # Fit a line to the CV vs response
+            z = np.polyfit(y, y_c, 1)
+            with plt.style.context(('ggplot')):
+                sns.set(rc=settings_sns, font_scale=1.0)
+                fig, ax = plt.subplots(figsize=(7, 5))
+                ax.scatter(y_c, y, c='red', edgecolors='k')
+                # Plot the best fit line
+                ax.plot(np.polyval(z, y), y, c='blue', linewidth=1)
+                # Plot the ideal 1:1 line
+                ax.plot(y, y, color='green', linewidth=1)
+                plt.title(attributes)
+                plt.xlabel('predicted')
+                plt.ylabel('observed')
+                plt.legend(['regression \nr$^{2}$ (CV): ' + str(round(score_cv, 2)), '1:1 line', 'samples'])
+
+                imgdata = BytesIO()
+                fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
+                plt.savefig(path + "r2_Prediction.png", dpi=300)
+
+                imgdata.seek(0)  # rewind the data
+
+                drawing = svg2rlg(imgdata)
+                renderPDF.draw(drawing, doc, 30, 70)
+                fig.clf()
+                plt.close(fig)
+            #
+
+            return doc
+        except ValueError as e:
+            print(e)
+
 
     def chunks(self,lst, n):
         return [lst[i:i + n] for i in range(0, len(lst), n)]

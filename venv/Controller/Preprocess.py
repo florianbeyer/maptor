@@ -1,13 +1,13 @@
 import sys
-sys.path.append(r'F:\Work\MaptorReivsed\venv\Model')
+# sys.path.append(r'F:\Work\Maptor\venv\Model')
 from InputModel import InputModule
-from ClassificationModel import RandomForrest
+from ClassificationModel import ClassificationModel
 import matplotlib.pyplot as plt
 
 
 class Prep():
     test = InputModule()
-    rf_test = RandomForrest()
+    rf_test = ClassificationModel()
     LoadingImages=""
     img_ds=""
     img=""
