@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r"F:\Work\Maptor\venv\Model")
+# sys.path.append(r"F:\Work\Maptor\venv\Model")
 from RFR_SSS_Model import RFR_SSS_Model
 
 class RFR_SSS_Controller():
