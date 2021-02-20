@@ -1,6 +1,5 @@
 try:
     import sys,os
-
     sys.path.append(r"..\Controller")
     sys.path.append(r"..\Model")
     sys.path.append(r"..\HelpingModel")

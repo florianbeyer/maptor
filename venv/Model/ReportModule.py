@@ -216,7 +216,7 @@ class ReportModule():
             data2.insert(0, ("Band", "Importance"))
 
             fig = plt.figure(figsize=(6, 6))
-            sn.heatmap(table_M, annot=True, cmap="BuPu", fmt='g')
+            sns.heatmap(table_M, annot=True, cmap="BuPu", fmt='g')
             #plt.show()
             imgdata = BytesIO()
             fig.savefig(path+"pred_acc_training.png")
@@ -314,7 +314,7 @@ class ReportModule():
             convolution_mat = convolution_mat.drop('All', axis=0)
 
             fig = plt.figure(figsize=(6, 5))
-            sn.heatmap(convolution_mat, annot=True, cmap="BuPu", fmt='g')
+            sns.heatmap(convolution_mat, annot=True, cmap="BuPu", fmt='g')
             # plt.show()
 
             imgdata = BytesIO()
