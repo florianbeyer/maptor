@@ -1,11 +1,16 @@
 try:
     import sys,os
-    sys.path.append(r"..\Model")
-    sys.path.append(r"..\HelpingModel")
+    import pathlib, os, sys
+    current_folder_path, current_folder_name = os.path.split(os.getcwd())
+    sys.path.append(str(current_folder_path) + "\HelpingModel")
+    sys.path.append(str(current_folder_path) + "\Model")
+
+    # sys.path.append(r"..\Model")
+    # sys.path.append(r"..\HelpingModel")
     from ReportModule import ReportModule
     from InputController import InputController
     from RFHelper import RFHelper
-    from RegRptHelper import RegressionReportHelper
+    from RF_SS_Helper import RF_SS_Helper
     from RFR_SSS_Controller import RFR_SSS_Controller
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtWidgets import QFileDialog,QMessageBox

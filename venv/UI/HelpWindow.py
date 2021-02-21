@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'HelpWindow.ui'
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -31,7 +22,7 @@ class Ui_HelpWindow(object):
         font.setPointSize(7)
         self.label_2.setFont(font)
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(r"Images/flob.png"))
+        self.label_2.setPixmap(QtGui.QPixmap(r"..\UI\Images\flob.png"))
         self.label_2.setObjectName("label_2")
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(230, 250, 471, 191))

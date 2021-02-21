@@ -1,4 +1,4 @@
-class RegressionReportHelper():
+class RF_SS_Helper():
     imageExtent=""
     BandNumber=""
     FieldName=""

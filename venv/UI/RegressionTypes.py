@@ -3,7 +3,7 @@ try:
     from PyQt5 import QtCore, QtGui, QtWidgets
     from RF_NSS import Ui_RF_NSS
     from PLSR_SSS import Ui_PLSR_SSS
-    from PLSR_LDS import Ui_PLSR_LDS
+    from PLSR_NSS import Ui_PLSR_NSS
     from RFR_SSS import Ui_RFR_SSS
     from PyQt5.QtWidgets import QFileDialog, QMessageBox
 
@@ -122,7 +122,7 @@ class Ui_RegressionTypes(object):
         if self.PLSR_NN_btn.isChecked() == True:
 
             self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_PLSR_LDS()
+            self.ui = Ui_PLSR_NSS()
             self.ui.setupUi(self.window)
             self.window.show()
 

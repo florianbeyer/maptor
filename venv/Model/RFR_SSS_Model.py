@@ -7,7 +7,7 @@ try:
     # sys.path.append(r"F:\Work\Maptor\venv\HelpingModel")
     from RFHelper import RFHelper
     # sys.path.append(r"..\HelpingModel")
-    from RegRptHelper import RegressionReportHelper
+    from RF_SS_Helper import RF_SS_Helper
     from RF_NSS_Controller import RF_NSS_Controller
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtWidgets import QFileDialog,QMessageBox

@@ -1,10 +1,10 @@
 import sys,logging,traceback
 # sys.path.append(r"F:\Work\Maptor\venv\Model")
-from PLSR_LDS_Model import PLSR_LDS_Model
+from PLSR_NSS_Model import PLSR_NSS_Model
 
 
-class PLSR_LDS_Controller():
-    mdl = PLSR_LDS_Model()
+class PLSR_NSS_Controller():
+    mdl = PLSR_NSS_Model()
 
     def ComponentRegressor(self,features,X,y):
         return self.mdl.ComponentRegressor(features,X,y)

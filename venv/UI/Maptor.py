@@ -4,6 +4,7 @@ try:
     sys.path.append(str(current_folder_path)+"\Controller")
     sys.path.append(str(current_folder_path)+"\Model")
     sys.path.append(str(current_folder_path)+"\HelpingModel")
+
     import sys,logging
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtWidgets import QFileDialog, QMessageBox
@@ -47,12 +48,12 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(290, 660, 141, 121))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(r"Images/rsz_11rsz_euro_fonds_quer.png"))
+        self.label.setPixmap(QtGui.QPixmap(r"..\UI\Images\rsz_11rsz_euro_fonds_quer.png"))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(160, -50, 431, 241))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(r"Images/Mapto.png"))
+        self.label_2.setPixmap(QtGui.QPixmap(r"..\UI\Images\Mapto.png"))
         self.label_2.setScaledContents(False)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
@@ -61,12 +62,12 @@ class Ui_MainWindow(object):
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(10, 650, 141, 121))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap(r"Images/unirostock.png"))
+        self.label_4.setPixmap(QtGui.QPixmap(r"..\UI\Images\unirostock.png"))
         self.label_4.setObjectName("label_4")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(160, 675, 101, 81))
         self.label_6.setText("")
-        self.label_6.setPixmap(QtGui.QPixmap(r"Images/rsz_1rsz_1europaeischer-sozialfonds-vektor-farbig-rgb.png"))
+        self.label_6.setPixmap(QtGui.QPixmap(r"..\UI\Images\rsz_1rsz_1europaeischer-sozialfonds-vektor-farbig-rgb.png"))
         self.label_6.setObjectName("label_6")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(430, 670, 231, 91))
@@ -75,7 +76,7 @@ class Ui_MainWindow(object):
         self.label_5.setSizeIncrement(QtCore.QSize(1000, 1000))
         self.label_5.setBaseSize(QtCore.QSize(1000, 1000))
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap(r"Images/rsz_1wetscapes_logo.png"))
+        self.label_5.setPixmap(QtGui.QPixmap(r"..\UI\Images\rsz_1wetscapes_logo.png"))
         self.label_5.setObjectName("label_5")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(50, 740, 621, 91))
@@ -145,7 +146,7 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     try:
-        import sys,os
+
         try:
 
             if 'PROJ_LIB' in os.environ:
@@ -153,6 +154,7 @@ if __name__ == "__main__":
 
             ROOT_DIR = os.path.abspath(os.curdir)
             PROJ_DIR = ROOT_DIR + "\PROJ"
+            print(PROJ_DIR)
             os.environ['PROJ_LIB'] = PROJ_DIR
 
             # if 'PROJ_LIB' in os.environ:

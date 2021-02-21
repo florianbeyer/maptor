@@ -11,9 +11,9 @@ try:
     import numpy as np
 
     from InputController import InputController
-    from PLSR_LDS_Controller import PLSR_LDS_Controller
+    from PLSR_NSS_Controller import PLSR_NSS_Controller
     from ReportModule import ReportModule
-    from PLSR_LDS_Helper import PLSR_LDS_Helper
+    from PLSR_NSS_Helper import PLSR_NSS_Helper
     import pandas as pd
     import traceback
 
@@ -37,9 +37,9 @@ except Exception as e:
 
 
 
-class Ui_PLSR_LDS(object):
+class Ui_PLSR_NSS(object):
     input_C = InputController()
-    PLSR_C = PLSR_LDS_Controller()
+    PLSR_C = PLSR_NSS_Controller()
     rt = ReportModule()
 
 
@@ -410,7 +410,7 @@ class Ui_PLSR_LDS(object):
         self.PLSR_C.saveimage(img,prediction,prediction_map,img_ds)
 
 
-        rp_param = PLSR_LDS_Helper( img, train_data, features, train_features, test_features, train_labels, test_labels, mse, component, predictions_test_ds, labels,
+        rp_param = PLSR_NSS_Helper( img, train_data, features, train_features, test_features, train_labels, test_labels, mse, component, predictions_test_ds, labels,
         prediction, importance, X, y, self.attributes.currentText(), reportpath, prediction_map, modelsavepath,self.ImgPath.text(),self.tranData_Path.text())
 
 

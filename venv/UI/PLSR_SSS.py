@@ -221,17 +221,17 @@ class Ui_PLSR_SSS(object):
 
     def Run(self):
         try:
-            try:
-                ROOT_DIR = os.path.abspath(os.curdir)
-                PROJ_DIR = ROOT_DIR + "\PROJ"
-                os.environ['PROJ_LIB'] = PROJ_DIR
-
-                if 'PROJ_LIB' in os.environ:
-                    print('env variable : PROJ_LIB  is set...')
-                else:
-                    print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
-            except Exception as ex:
-                print("Could not set env_var")
+            # try:
+            #     ROOT_DIR = os.path.abspath(os.curdir)
+            #     PROJ_DIR = ROOT_DIR + "\PROJ"
+            #     os.environ['PROJ_LIB'] = PROJ_DIR
+            #
+            #     if 'PROJ_LIB' in os.environ:
+            #         print('env variable : PROJ_LIB  is set...')
+            #     else:
+            #         print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
+            # except Exception as ex:
+            #     print("Could not set env_var")
 
             log_format = "%(asctime)s::%(levelname)s::%(name)s::" \
                          "%(filename)s::%(lineno)d::%(message)s"

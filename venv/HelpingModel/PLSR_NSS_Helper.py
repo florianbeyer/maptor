@@ -1,4 +1,4 @@
-class PLSR_LDS_Helper(object):
+class PLSR_NSS_Helper(object):
     def __init__(self,img,train_data,features,train_features,test_features,train_labels,test_labels,mse,component,predictions_test_ds,labels,
                  prediction,importance,X,y,attribute,reportpath,prediction_map,modelsavepath,img_path,tran_path):
         # self.dir_path = dir_path,

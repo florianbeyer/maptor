@@ -1,7 +1,5 @@
 try:
     import sys,os,logging
-    # sys.path.append(r"F:\Work\Maptor\venv\Model")
-    # sys.path.append(r"F:\Work\Maptor\venv\Controller")
     from InputController import InputController
     from ClassificationController import ClassificationController
     from PyQt5 import QtCore, QtGui, QtWidgets
@@ -367,18 +365,18 @@ class Ui_ClassificationWindow(object):
 
     def Run(self):
         try:
-            import sys, os
-            try:
-                ROOT_DIR = os.path.abspath(os.curdir)
-                PROJ_DIR = ROOT_DIR + "\PROJ"
-                os.environ['PROJ_LIB'] = PROJ_DIR
-
-                if 'PROJ_LIB' in os.environ:
-                    print('env variable : PROJ_LIB  set...')
-                else:
-                    print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
-            except Exception as ex:
-                print("Could not set env_var")
+            # import sys, os
+            # try:
+            #     ROOT_DIR = os.path.abspath(os.curdir)
+            #     PROJ_DIR = ROOT_DIR + "\PROJ"
+            #     os.environ['PROJ_LIB'] = PROJ_DIR
+            #
+            #     if 'PROJ_LIB' in os.environ:
+            #         print('env variable : PROJ_LIB  set...')
+            #     else:
+            #         print('Couldnt set env variable : PROJ_LIB.Please set Manually ')
+            # except Exception as ex:
+            #     print("Could not set env_var")
 
             print("The process has started.... This will take few minutes")
             if self.treesNo.text() == "":

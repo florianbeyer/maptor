@@ -8,10 +8,10 @@ from osgeo import gdal
 import joblib
 import sys
 # sys.path.append(r"..\HelpingModel")
-from RegRptHelper import RegressionReportHelper
+from RF_SS_Helper import RF_SS_Helper
 
 class RF_NSS_Model():
-    helper = RegressionReportHelper()
+    helper = RF_SS_Helper()
 
     def RF_regressor(self,roi,img,attributes,test_size,est):
         try:

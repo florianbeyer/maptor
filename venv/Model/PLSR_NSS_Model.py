@@ -19,7 +19,7 @@ except Exception as e:
     print('Can not import files:' + str(e))
     input("Press Enter to exit!")
     sys.exit(0)
-class PLSR_LDS_Model():
+class PLSR_NSS_Model():
 
     def ComponentRegressor(self,features,X,y):
         mse = []

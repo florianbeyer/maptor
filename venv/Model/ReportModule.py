@@ -291,7 +291,6 @@ class ReportModule():
             logging.error("Exception occurred", exc_info=True)
             print(e)
 
-
     def Clf_prepare_section3(self,doc,X_v,y_v,convolution_mat,df_sum_mat,score,roi_v,model_path,Image_savePath,dir_path):
         try:
             #print(Image_savePath+"here.................!!")
@@ -405,18 +404,16 @@ class ReportModule():
                 plt.subplot(121)
                 print(img.shape)
                 plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
+                roi_positions = np.where(RFHelper.training > 0)
+                plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+                plt.title('first RS band and sample points', fontsize=8)
                 plt.title('RS image - first band')
-                plt.subplot(122)
-                plt.imshow(RFHelper.training, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-                plt.title('Training Image')
-                #plt.show()
+
                 imgdata = BytesIO()
                 fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
                 imgdata.seek(0)  # rewind the data
                 drawing = svg2rlg(imgdata)
                 renderPDF.draw(drawing, doc, 50, 160)
-            # else:
-            #     renderPDF.draw(drawing, doc, 50, 250)
                 fig.clf()
                 plt.close(fig)
                 fig = plt.figure(figsize=(5, 4))
@@ -434,15 +431,13 @@ class ReportModule():
 
 
             if img.shape[0]<=  img.shape[1]:
-                fig = plt.figure(figsize=(6, 4))
+                fig = plt.figure(figsize=(5, 4))
                 plt.subplot(121)
                 print(img.shape)
                 plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
-                plt.title('RS image - first band')
-                plt.subplot(122)
-                plt.imshow(RFHelper.training, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-                plt.title('Training Image')
-                #plt.show()
+                roi_positions = np.where(RFHelper.training > 0)
+                plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+                plt.title('first RS band and sample points', fontsize=8)
                 imgdata = BytesIO()
                 fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
                 imgdata.seek(0)  # rewind the data
@@ -466,14 +461,16 @@ class ReportModule():
                 doc.showPage()
 
             plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
-            plt.title('RS image - first band')
+            roi_positions = np.where(RFHelper.training > 0)
+            plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
+            plt.title('first RS band and sample points', fontsize=8)
             plt.savefig(path + "RS image-first_band.png", dpi=300)
             plt.clf()
 
-            plt.imshow(RFHelper.training, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-            plt.title('Training Image')
-            plt.savefig(path + "Training_Image.png", dpi=300)
-            plt.clf()
+            # plt.imshow(RFHelper.training, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+            # plt.title('Training Image')
+            # plt.savefig(path + "Training_Image.png", dpi=300)
+            # plt.clf()
 
             plt.imshow(RFHelper.prediction, cmap=plt.cm.Spectral)
             plt.title('Prediction')
@@ -989,9 +986,9 @@ class ReportModule():
             roi_positions = np.where(PLSR_LDS_Helper.train_data > 0)
             plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
             plt.title('RS image - first band')
-            plt.subplot(122)
-            plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-            plt.title('Training Image')
+            # plt.subplot(122)
+            # plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+            # plt.title('Training Image')
             # plt.show()
             imgdata = BytesIO()
             fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
@@ -1024,9 +1021,9 @@ class ReportModule():
             roi_positions = np.where(PLSR_LDS_Helper.train_data > 0)
             plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
             plt.title('RS image - first band')
-            plt.subplot(122)
-            plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-            plt.title('Training Image')
+            # plt.subplot(122)
+            # plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+            # plt.title('Training Image')
             # plt.show()
             imgdata = BytesIO()
             fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
@@ -1058,10 +1055,10 @@ class ReportModule():
         plt.savefig(path + "RS image-first_band.png", dpi=300)
         plt.clf()
 
-        plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-        plt.title('Training Image')
-        plt.savefig(path + "Training_Image.png", dpi=300)
-        plt.clf()
+        # plt.imshow(PLSR_LDS_Helper.train_data, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+        # plt.title('Training Image')
+        # plt.savefig(path + "Training_Image.png", dpi=300)
+        # plt.clf()
 
         plt.imshow(PLSR_LDS_Helper.prediction, cmap=plt.cm.Spectral)
         plt.colorbar()
@@ -1348,10 +1345,10 @@ class ReportModule():
                 plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
                 plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
                 plt.title('RS image - first band')
-                plt.subplot(122)
-                plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-                plt.title('Training Image')
-                #plt.show()
+                # plt.subplot(122)
+                # plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+                # plt.title('Training Image')
+                # #plt.show()
                 imgdata = BytesIO()
                 fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
                 imgdata.seek(0)  # rewind the data
@@ -1383,10 +1380,10 @@ class ReportModule():
                 plt.imshow(img[:, :, 0], cmap=plt.cm.Greys_r)
                 plt.scatter(roi_positions[1], roi_positions[0], marker='x', c='r')
                 plt.title('RS image - first band')
-                plt.subplot(122)
-                plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
-                plt.title('Training Image')
-                #plt.show()
+                # plt.subplot(122)
+                # plt.imshow(TrainingData, cmap=plt.cm.Spectral)  # data = roi && cmap = plt.cm.Spectral
+                # plt.title('Training Image')
+                # #plt.show()
                 imgdata = BytesIO()
                 fig.savefig(imgdata, format='svg', bbox_inches='tight', pad_inches=0)
                 imgdata.seek(0)  # rewind the data
@@ -1426,8 +1423,6 @@ class ReportModule():
             plt.title('Prediction')
             plt.savefig(path + "Prediction.png", dpi=300)
             plt.clf()
-
-
 
 
             settings_sns = {'axes.facecolor': 'white',
